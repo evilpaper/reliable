@@ -1,10 +1,7 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
-import { Menu } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
+import * as React from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const navItems = [
