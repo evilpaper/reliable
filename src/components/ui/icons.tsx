@@ -15,6 +15,7 @@ import {
   ArrowRight,
   AlignJustify,
   X,
+  ShoppingCart,
 } from "lucide-react";
 
 export const Icons = {
@@ -34,4 +35,5 @@ export const Icons = {
   arrowRight: ArrowRight,
   hamburger: AlignJustify,
   close: X,
+  shoppingCart: ShoppingCart,
 };
