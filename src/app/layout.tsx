@@ -1,8 +1,8 @@
+import Nav from "@/components/nav";
 import type { Metadata } from "next";
+import { ThemeProvider } from "@/components/theme-provider";
 
 import "./globals.css";
-import Nav from "@/components/nav";
-import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
   title: "Reliable",
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
         <ThemeProvider
           attribute="class"

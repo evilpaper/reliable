@@ -15,7 +15,7 @@ export default function Nav() {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <nav className="text-zinc-50">
+    <nav>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -29,14 +29,14 @@ export default function Nav() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-zinc-300 hover:bg-zinc-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="px-3 py-2 rounded-md text-sm font-medium"
                 >
                   {item.name}
                 </Link>
               ))}
             </div>
           </div>
-          <div className="md:hidden">
+          <section className="md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger>Menu</SheetTrigger>
               <SheetContent
@@ -57,7 +57,7 @@ export default function Nav() {
                 </nav>
               </SheetContent>
             </Sheet>
-          </div>
+          </section>
         </div>
       </div>
     </nav>
