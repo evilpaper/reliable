@@ -2,7 +2,14 @@
 
 import Link from "next/link";
 import * as React from "react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Icons } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 
@@ -20,16 +27,19 @@ export default function Nav() {
         <section className="md:hidden">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger>Menu</SheetTrigger>
-            <SheetContent
-              side="right"
-              className="w-[300px] sm:w-[400px] bg-black border-none"
-            >
-              <nav className="flex flex-col gap-4">
+            <SheetContent side="left">
+              <SheetHeader className="self-start text-left mb-6">
+                <SheetTitle>Are you absolutely sure?</SheetTitle>
+                <SheetDescription>
+                  This action cannot be undone. This will permanently delete
+                  your account and remove your data from our servers.
+                </SheetDescription>
+              </SheetHeader>
+              <nav className="flex flex-col gap-12 mt-12">
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="text-zinc-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
