@@ -29,11 +29,8 @@ export default function Nav() {
             <SheetTrigger>Menu</SheetTrigger>
             <SheetContent side="left">
               <SheetHeader className="self-start text-left mb-6">
-                <SheetTitle>Are you absolutely sure?</SheetTitle>
-                <SheetDescription>
-                  This action cannot be undone. This will permanently delete
-                  your account and remove your data from our servers.
-                </SheetDescription>
+                <SheetTitle>Reliable</SheetTitle>
+                <SheetDescription></SheetDescription>
               </SheetHeader>
               <nav className="flex flex-col gap-12 mt-12">
                 {navItems.map((item) => (

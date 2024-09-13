@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className="flex flex-col items-center">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
