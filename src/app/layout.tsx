@@ -1,5 +1,6 @@
-import Nav from "@/components/nav";
 import type { Metadata } from "next";
+import { Nav } from "@/components/nav";
+import { Footer } from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 
 import "./globals.css";
@@ -16,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="flex flex-col items-center">
+      <body className="flex flex-col items-center justify-between h-screen">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -25,6 +26,7 @@ export default function RootLayout({
         >
           <Nav />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

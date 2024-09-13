@@ -18,7 +18,7 @@ const navItems = [
   { name: "About", href: "/about" },
 ];
 
-export default function Nav() {
+export function Nav() {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
@@ -29,7 +29,11 @@ export default function Nav() {
             <SheetTrigger>Menu</SheetTrigger>
             <SheetContent side="left">
               <SheetHeader className="self-start text-left mb-6">
-                <SheetTitle>Reliable</SheetTitle>
+                <SheetTitle>
+                  <Link href="/" className="text-xl font-normal">
+                    Reliable
+                  </Link>
+                </SheetTitle>
                 <SheetDescription></SheetDescription>
               </SheetHeader>
               <nav className="flex flex-col gap-12 mt-12">
