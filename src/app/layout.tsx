@@ -7,7 +7,8 @@ import "@/styles/globals.css";
 
 export const metadata: Metadata = {
   title: "Reliable",
-  description: "The best way to learn work skills",
+  description:
+    "Learn work place compliance skills fast. Get certificate on completion.",
 };
 
 export default function RootLayout({
