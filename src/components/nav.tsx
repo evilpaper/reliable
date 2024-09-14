@@ -67,7 +67,9 @@ export function Nav() {
           ))}
         </nav>
         <section className="flex items-center gap-6 ">
-          <Icons.shoppingCart />
+          <Button variant="ghost" size="icon">
+            <Icons.shoppingCart />
+          </Button>
           <Button>Login</Button>
         </section>
       </section>
