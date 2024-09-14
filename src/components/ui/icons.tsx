@@ -16,6 +16,8 @@ import {
   AlignJustify,
   X,
   ShoppingCart,
+  BadgeCheck,
+  StarIcon,
 } from "lucide-react";
 
 export const Icons = {
@@ -36,4 +38,6 @@ export const Icons = {
   hamburger: AlignJustify,
   close: X,
   shoppingCart: ShoppingCart,
+  badgeCheck: BadgeCheck,
+  star: StarIcon,
 };

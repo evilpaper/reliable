@@ -1,3 +1,9 @@
+import { CourseCard } from "@/components/ui/course-card";
+
 export default function Page() {
-  return <p>Home</p>;
+  return (
+    <section>
+      <CourseCard />
+    </section>
+  );
 }
