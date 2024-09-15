@@ -91,7 +91,7 @@ export function Nav() {
           <Button variant="ghost" size="icon" className="flex gap-2 relative">
             <Icons.shoppingCart />
             {cartCount !== 0 && (
-              <div className="absolute bg-black text-white text-xs rounded-full h-6 w-6 flex items-center justify-center top-0 right-0 transform translate-x-1/4 -translate-y-1/4">
+              <div className="absolute bg-foreground text-background border-white border text-xs rounded-full h-6 w-6 flex items-center justify-center top-0 right-0 transform translate-x-1/4 -translate-y-1/4">
                 {cartCount}
               </div>
             )}
