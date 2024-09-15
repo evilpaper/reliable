@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/features/theme/theme-provider";
 import CartProvider from "@/features/cart/context/cart-context";
 
 import "@/styles/globals.css";

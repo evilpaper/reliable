@@ -1,4 +1,4 @@
-import { CourseCard } from "@/components/ui/course-card";
+import { CourseCard } from "@/components/courses/course-card";
 
 export default function Page() {
   return (
