@@ -23,6 +23,7 @@ const navItems = [
 
 export function Nav() {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [isCartOpen, setIsCartOpen] = React.useState(false);
   const pathName = usePathname();
   const { cartCount } = useCart();
 
@@ -88,7 +89,12 @@ export function Nav() {
           ))}
         </nav>
         <section className="flex items-center gap-6 ">
-          <Button variant="ghost" size="icon" className="flex gap-2 relative">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="flex gap-2 relative"
+            onClick={() => setIsCartOpen((prev) => !prev)}
+          >
             <Icons.shoppingCart />
             {cartCount !== 0 && (
               <div className="absolute bg-foreground text-background border-white border text-xs rounded-full h-6 w-6 flex items-center justify-center top-0 right-0 transform translate-x-1/4 -translate-y-1/4">
@@ -98,6 +104,14 @@ export function Nav() {
           </Button>
           <Button>Login</Button>
         </section>
+        <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
+          <SheetContent side="right">
+            <SheetHeader className="self-start text-left mb-6">
+              <SheetTitle>Cart</SheetTitle>
+              <SheetDescription></SheetDescription>
+            </SheetHeader>
+          </SheetContent>
+        </Sheet>
       </section>
     </section>
   );
