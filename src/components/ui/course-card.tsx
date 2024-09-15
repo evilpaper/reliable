@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Icons } from "@/components/ui/icons";
+import { useCart } from "@/context/cart-context";
 
 const uniqueSellingPoints = [
   { usp: "100% online training", id: crypto.randomUUID() },
@@ -26,6 +29,8 @@ const uniqueSellingPoints = [
 ];
 
 export function CourseCard() {
+  const { addToCart } = useCart();
+
   return (
     <Card>
       <CardHeader>
@@ -51,7 +56,7 @@ export function CourseCard() {
         <Button variant="secondary" className="px-3 shadow-none">
           £20 + VAT
         </Button>
-        <Button>Buy course</Button>
+        <Button onClick={addToCart}>Buy course</Button>
       </CardFooter>
     </Card>
   );

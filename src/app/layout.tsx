@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import ShoppingCartProvider from "@/context/cart-context";
 
 import "@/styles/globals.css";
 
@@ -25,9 +26,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Nav />
-          {children}
-          <Footer />
+          <ShoppingCartProvider>
+            <Nav />
+            {children}
+            <Footer />
+          </ShoppingCartProvider>
         </ThemeProvider>
       </body>
     </html>

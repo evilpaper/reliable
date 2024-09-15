@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 import { Icons } from "@/components/ui/icons";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/context/cart-context";
 
 const navItems = [
   { name: "Courses", href: "/courses" },
@@ -23,6 +24,7 @@ const navItems = [
 export function Nav() {
   const [isOpen, setIsOpen] = React.useState(false);
   const pathName = usePathname();
+  const { cartCount } = useCart();
 
   return (
     <section className="container z-40 p-4 flex items-center gap-6 w-full justify-between md:justify-normal">
@@ -86,8 +88,9 @@ export function Nav() {
           ))}
         </nav>
         <section className="flex items-center gap-6 ">
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="flex gap-2">
             <Icons.shoppingCart />
+            {cartCount !== 0 && cartCount}
           </Button>
           <Button>Login</Button>
         </section>
