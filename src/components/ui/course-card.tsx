@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Icons } from "@/components/ui/icons";
-import { useCart } from "@/context/cart-context";
+import { useCart } from "@/features/cart/hooks/use-cart";
 
 const uniqueSellingPoints = [
   { usp: "100% online training", id: crypto.randomUUID() },

@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 import { Icons } from "@/components/ui/icons";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { useCart } from "@/context/cart-context";
+import { useCart } from "@/features/cart/hooks/use-cart";
 
 const navItems = [
   { name: "Courses", href: "/courses" },

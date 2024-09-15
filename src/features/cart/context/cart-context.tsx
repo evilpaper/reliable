@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import React from "react";
 
 // Define the shape of your context
 interface CartContextType {
@@ -8,25 +8,21 @@ interface CartContextType {
   addToCart: () => void; // Function signature for addToCart
 }
 
-export const CartContext = createContext<CartContextType>({
+export const CartContext = React.createContext<CartContextType>({
   cartCount: 0,
   addToCart: () => {}, // Provide an empty function as default
 });
-
-export const useCart = () => {
-  return useContext(CartContext);
-};
 
 export default function CartProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [cartCount, setCartCount] = useState(0);
-  const hasLoadedBefore = useRef(true); // Ensure we don't reset the
+  const [cartCount, setCartCount] = React.useState(0);
+  const hasLoadedBefore = React.useRef(true); // Ensure we don't reset the
 
   // Load the cart count from localStorage on initial render
-  useEffect(() => {
+  React.useEffect(() => {
     const storedCount = localStorage.getItem("cartCount");
 
     if (storedCount) {
@@ -35,7 +31,7 @@ export default function CartProvider({
   }, []);
 
   // Update localStorage whenever cartCount changes
-  useEffect(() => {
+  React.useEffect(() => {
     if (hasLoadedBefore.current) {
       hasLoadedBefore.current = false;
     } else {
