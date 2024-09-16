@@ -56,7 +56,7 @@ export function CourseCard() {
         <Button variant="secondary" className="px-3 shadow-none">
           £20 + VAT
         </Button>
-        <Button onClick={addToCart}>Buy course</Button>
+        <Button onClick={() => addToCart("123456")}>Buy course</Button>
       </CardFooter>
     </Card>
   );

@@ -2,15 +2,19 @@
 
 import React from "react";
 
+type CourseId = string;
+type AddToCart = (courseid: CourseId) => void;
+
 // Define the shape of your context
 interface CartContextType {
-  cartCount: number;
-  addToCart: () => void; // Function signature for addToCart
+  cartContent: CourseId[];
+  addToCart: AddToCart;
 }
 
+// Create the context. Provide an empty function as default
 export const CartContext = React.createContext<CartContextType>({
-  cartCount: 0,
-  addToCart: () => {}, // Provide an empty function as default
+  cartContent: [],
+  addToCart: () => {},
 });
 
 export default function CartProvider({
@@ -18,34 +22,43 @@ export default function CartProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [cartCount, setCartCount] = React.useState(0);
-  const hasLoadedBefore = React.useRef(true); // Ensure we don't reset the
+  const [cartContent, setCartContent] = React.useState<CourseId[]>([]);
+
+  // Ensure we don't reset the context in development strickt mode when effects run twice.
+  const hasLoadedBefore = React.useRef(true);
 
   // Load the cart count from localStorage on initial render
   React.useEffect(() => {
-    const storedCount = localStorage.getItem("cartCount");
+    const storedCartContent = localStorage.getItem("cart");
 
-    if (storedCount) {
-      setCartCount(Number(storedCount));
+    if (storedCartContent) {
+      setCartContent(JSON.parse(storedCartContent));
     }
   }, []);
 
-  // Update localStorage whenever cartCount changes
+  // Update localStorage whenever cartContent changes
   React.useEffect(() => {
     if (hasLoadedBefore.current) {
       hasLoadedBefore.current = false;
     } else {
-      localStorage.setItem("cartCount", cartCount.toString());
+      localStorage.setItem("cart", JSON.stringify(cartContent));
     }
-  }, [cartCount]);
+  }, [cartContent]);
 
   // Function to add a course to the cart
-  const addToCart = () => {
-    setCartCount((prev) => prev + 1);
+  const addToCart = (courseId?: CourseId) => {
+    let nextCartContent;
+    if (courseId) {
+      nextCartContent = [...cartContent, courseId];
+    } else {
+      nextCartContent = [...cartContent];
+    }
+
+    setCartContent(nextCartContent);
   };
 
   return (
-    <CartContext.Provider value={{ cartCount, addToCart }}>
+    <CartContext.Provider value={{ cartContent, addToCart }}>
       {children}
     </CartContext.Provider>
   );
