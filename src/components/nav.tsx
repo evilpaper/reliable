@@ -15,6 +15,7 @@ import { Icons } from "@/components/ui/icons";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/features/cart/hooks/use-cart";
+import { CartSheet } from "@/components/cart/cart-sheet";
 
 const navItems = [
   { name: "Courses", href: "/courses" },
@@ -104,14 +105,7 @@ export function Nav() {
           </Button>
           <Button>Login</Button>
         </section>
-        <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
-          <SheetContent side="right">
-            <SheetHeader className="self-start text-left mb-6">
-              <SheetTitle>Cart</SheetTitle>
-              <SheetDescription></SheetDescription>
-            </SheetHeader>
-          </SheetContent>
-        </Sheet>
+        <CartSheet isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
       </section>
     </section>
   );
