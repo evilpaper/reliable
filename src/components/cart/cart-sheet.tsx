@@ -6,13 +6,12 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 
-export function CartSheet({
-  isCartOpen,
-  setIsCartOpen,
-}: {
+interface CartSheetProps {
   isCartOpen: boolean;
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+}
+
+export function CartSheet({ isCartOpen, setIsCartOpen }: CartSheetProps) {
   return (
     <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
       <SheetContent side="right">
