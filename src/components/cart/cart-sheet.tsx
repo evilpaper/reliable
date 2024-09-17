@@ -21,8 +21,8 @@ export function CartSheet({ isCartOpen, setIsCartOpen }: CartSheetProps) {
           <SheetTitle>Cart</SheetTitle>
           <SheetDescription>
             {cartContent.length > 0 &&
-              cartContent.map((cartItem, idx) => {
-                return <p key={`${cartItem}+${idx}`}>{cartItem}</p>;
+              cartContent.map(({ courseId, quantity }) => {
+                return <p key={courseId}>{`${courseId}: ${quantity}`}</p>;
               })}
           </SheetDescription>
         </SheetHeader>

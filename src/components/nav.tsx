@@ -28,6 +28,10 @@ export function Nav() {
   const pathName = usePathname();
   const { cartContent } = useCart();
 
+  const cartQuantity = cartContent.reduce((arr, curr) => {
+    return arr + curr.quantity;
+  }, 0);
+
   return (
     <section className="container z-40 p-4 flex items-center gap-6 w-full justify-between md:justify-normal">
       <div className="flex items-center gap-6">
@@ -97,9 +101,9 @@ export function Nav() {
             onClick={() => setIsCartOpen((prev) => !prev)}
           >
             <Icons.shoppingCart />
-            {cartContent.length !== 0 && (
+            {cartQuantity > 0 && (
               <div className="absolute bg-foreground text-background border-white border text-xs rounded-full h-6 w-6 flex items-center justify-center top-0 right-0 transform translate-x-1/4 -translate-y-1/4">
-                {cartContent.length}
+                {cartQuantity}
               </div>
             )}
           </Button>

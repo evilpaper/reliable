@@ -4,10 +4,13 @@ import React from "react";
 
 type CourseId = string;
 type AddToCart = (courseid: CourseId) => void;
-
-// Define the shape of your context
+type CartItem = {
+  courseId: CourseId;
+  quantity: number;
+};
+type CartContent = CartItem[];
 interface CartContextType {
-  cartContent: CourseId[];
+  cartContent: CartItem[];
   addToCart: AddToCart;
 }
 
@@ -22,7 +25,7 @@ export default function CartProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [cartContent, setCartContent] = React.useState<CourseId[]>([]);
+  const [cartContent, setCartContent] = React.useState<CartContent>([]);
 
   // Ensure we don't reset the context in development strickt mode when effects run twice.
   const hasLoadedBefore = React.useRef(true);
@@ -45,16 +48,34 @@ export default function CartProvider({
     }
   }, [cartContent]);
 
-  // Function to add a course to the cart
-  const addToCart = (courseId?: CourseId) => {
-    let nextCartContent;
-    if (courseId) {
-      nextCartContent = [...cartContent, courseId];
-    } else {
-      nextCartContent = [...cartContent];
-    }
+  const findExistingItem = (
+    cart: CartContent,
+    courseId: CourseId
+  ): CartItem | undefined => cart.find((item) => item.courseId === courseId);
 
-    setCartContent(nextCartContent);
+  const incrementItemQuantity = (item: CartItem): CartItem => ({
+    ...item,
+    quantity: item.quantity + 1,
+  });
+
+  const createNewItem = (courseId: CourseId): CartItem => ({
+    courseId,
+    quantity: 1,
+  });
+
+  // Function to add a course to the cart
+  const addToCart = (courseId: CourseId) => {
+    setCartContent((prevCart) => {
+      const existingItem = findExistingItem(prevCart, courseId);
+
+      if (!existingItem) {
+        return [...prevCart, createNewItem(courseId)];
+      }
+
+      return prevCart.map((item) => {
+        return item.courseId === courseId ? incrementItemQuantity(item) : item;
+      });
+    });
   };
 
   return (
