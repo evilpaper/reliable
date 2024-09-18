@@ -3,21 +3,27 @@
 import React from "react";
 
 type CourseId = string;
+
 type AddToCart = (courseid: CourseId) => void;
+type RemoveFromCart = (courseId: CourseId) => void;
+
 type CartItem = {
   courseId: CourseId;
   quantity: number;
 };
+
 type CartContent = CartItem[];
 interface CartContextType {
   cartContent: CartItem[];
   addToCart: AddToCart;
+  removeFromCart: RemoveFromCart;
 }
 
 // Create the context. Provide an empty function as default
 export const CartContext = React.createContext<CartContextType>({
   cartContent: [],
   addToCart: () => {},
+  removeFromCart: () => {},
 });
 
 export default function CartProvider({
@@ -58,6 +64,16 @@ export default function CartProvider({
     quantity: item.quantity + 1,
   });
 
+  const decrementItemQuantity = (item: CartItem): CartItem => {
+    if (item.quantity === 0) {
+      return item;
+    }
+    return {
+      ...item,
+      quantity: item.quantity - 1,
+    };
+  };
+
   const createNewItem = (courseId: CourseId): CartItem => ({
     courseId,
     quantity: 1,
@@ -78,8 +94,22 @@ export default function CartProvider({
     });
   };
 
+  const removeFromCart = (courseId: CourseId) => {
+    setCartContent((prevCart) => {
+      const existingItem = findExistingItem(prevCart, courseId);
+
+      if (!existingItem) {
+        return [...prevCart];
+      }
+
+      return prevCart.map((item) => {
+        return item.courseId === courseId ? decrementItemQuantity(item) : item;
+      });
+    });
+  };
+
   return (
-    <CartContext.Provider value={{ cartContent, addToCart }}>
+    <CartContext.Provider value={{ cartContent, addToCart, removeFromCart }}>
       {children}
     </CartContext.Provider>
   );

@@ -18,6 +18,7 @@ import {
   ShoppingCart,
   BadgeCheck,
   StarIcon,
+  Minus,
 } from "lucide-react";
 
 export const Icons = {
@@ -34,6 +35,7 @@ export const Icons = {
   moon: Moon,
   system: Computer,
   add: Plus,
+  subtract: Minus,
   arrowRight: ArrowRight,
   hamburger: AlignJustify,
   close: X,

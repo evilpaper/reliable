@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+import { Icons } from "@/components/ui/icons";
 import {
   Sheet,
   SheetContent,
@@ -13,7 +15,8 @@ interface CartSheetProps {
 }
 
 export function CartSheet({ isCartOpen, setIsCartOpen }: CartSheetProps) {
-  const { cartContent } = useCart();
+  const { cartContent, addToCart, removeFromCart } = useCart();
+
   return (
     <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
       <SheetContent side="right">
@@ -22,7 +25,27 @@ export function CartSheet({ isCartOpen, setIsCartOpen }: CartSheetProps) {
           <SheetDescription>
             {cartContent.length > 0 &&
               cartContent.map(({ courseId, quantity }) => {
-                return <p key={courseId}>{`${courseId}: ${quantity}`}</p>;
+                return (
+                  <div key={courseId}>
+                    <p>{`${courseId}: ${quantity}`}</p>
+                    <div className="flex gap-6 py-2">
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={() => removeFromCart(courseId)}
+                      >
+                        <Icons.subtract className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={() => addToCart(courseId)}
+                      >
+                        <Icons.add className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                );
               })}
           </SheetDescription>
         </SheetHeader>
