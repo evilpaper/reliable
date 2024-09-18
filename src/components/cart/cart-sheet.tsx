@@ -1,4 +1,11 @@
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Icons } from "@/components/ui/icons";
 import {
   Sheet,
@@ -23,30 +30,39 @@ export function CartSheet({ isCartOpen, setIsCartOpen }: CartSheetProps) {
         <SheetHeader className="self-start text-left mb-6">
           <SheetTitle>Cart</SheetTitle>
           <SheetDescription>
-            {cartContent.length > 0 &&
-              cartContent.map(({ courseId, quantity }) => {
-                return (
-                  <div key={courseId}>
-                    <p>{`${courseId}: ${quantity}`}</p>
-                    <div className="flex gap-6 py-2">
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        onClick={() => removeFromCart(courseId)}
-                      >
-                        <Icons.subtract className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        onClick={() => addToCart(courseId)}
-                      >
-                        <Icons.add className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                );
-              })}
+            <ul>
+              {cartContent.length > 0 &&
+                cartContent.map(({ courseId, quantity }) => {
+                  return (
+                    <li key={courseId}>
+                      <Card>
+                        <CardHeader>
+                          <CardTitle>{courseId}</CardTitle>
+                        </CardHeader>
+                        <CardContent className="grid gap-4 flex justify-end">
+                          <div className="flex items-center gap-6 py-2">
+                            <Button
+                              variant="outline"
+                              size="icon"
+                              onClick={() => removeFromCart(courseId)}
+                            >
+                              <Icons.subtract className="h-4 w-4" />
+                            </Button>
+                            {quantity}
+                            <Button
+                              variant="outline"
+                              size="icon"
+                              onClick={() => addToCart(courseId)}
+                            >
+                              <Icons.add className="h-4 w-4" />
+                            </Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </li>
+                  );
+                })}
+            </ul>
           </SheetDescription>
         </SheetHeader>
       </SheetContent>
