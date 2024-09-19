@@ -56,7 +56,13 @@ export function CourseCard() {
         <Button variant="secondary" className="px-3 shadow-none">
           £20 + VAT
         </Button>
-        <Button onClick={() => addToCart("123456")}>Buy course</Button>
+        <Button
+          onClick={() =>
+            addToCart("123456", "Level 2 Food Hygiene and Safety for Cater")
+          }
+        >
+          Buy course
+        </Button>
       </CardFooter>
     </Card>
   );

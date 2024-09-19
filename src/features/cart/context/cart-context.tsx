@@ -3,11 +3,13 @@
 import React from "react";
 
 type CourseId = string;
+type CourseName = string;
 
-type AddToCart = (courseid: CourseId) => void;
+type AddToCart = (courseid: CourseId, courseName: CourseName) => void;
 type RemoveFromCart = (courseId: CourseId) => void;
 
 type CartItem = {
+  courseName: CourseName;
   courseId: CourseId;
   quantity: number;
 };
@@ -74,18 +76,21 @@ export default function CartProvider({
     };
   };
 
-  const createNewItem = (courseId: CourseId): CartItem => ({
+  const createNewItem = (
+    courseId: CourseId,
+    courseName: CourseName
+  ): CartItem => ({
+    courseName,
     courseId,
     quantity: 1,
   });
 
-  // Function to add a course to the cart
-  const addToCart = (courseId: CourseId) => {
+  const addToCart = (courseId: CourseId, courseName: CourseName) => {
     setCartContent((prevCart) => {
       const existingItem = findExistingItem(prevCart, courseId);
 
       if (!existingItem) {
-        return [...prevCart, createNewItem(courseId)];
+        return [...prevCart, createNewItem(courseId, courseName)];
       }
 
       return prevCart.map((item) => {
