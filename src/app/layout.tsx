@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
-import { ThemeProvider } from "@/features/theme/theme-provider";
-import CartProvider from "@/features/cart/context/cart-context";
 
 import "@/styles/globals.css";
+import { Providers } from "@/app/providers";
 
 export const metadata: Metadata = {
   title: "Reliable",
@@ -20,18 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="flex flex-col items-center justify-between h-screen">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <CartProvider>
-            <Nav />
-            {children}
-            <Footer />
-          </CartProvider>
-        </ThemeProvider>
+        <Providers>
+          <Nav />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

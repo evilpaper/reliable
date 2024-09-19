@@ -28,11 +28,7 @@ export const CartContext = React.createContext<CartContextType>({
   removeFromCart: () => {},
 });
 
-export default function CartProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function CartProvider({ children }: { children: React.ReactNode }) {
   const [cartContent, setCartContent] = React.useState<CartContent>([]);
 
   // Ensure we don't reset the context in development strickt mode when effects run twice.
