@@ -103,6 +103,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         return [...prevCart];
       }
 
+      if (existingItem.quantity === 1) {
+        return prevCart.filter((item) => item.courseId !== courseId);
+      }
+
       return prevCart.map((item) => {
         return item.courseId === courseId ? decrementItemQuantity(item) : item;
       });
