@@ -1,4 +1,4 @@
-import { CartProvider } from "@/features/cart/cart-context";
+import { CartProvider } from "@/features/cart/cart-provider";
 import { ThemeProvider } from "@/features/theme/theme-provider";
 import React from "react";
 
