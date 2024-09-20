@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 import { Icons } from "@/components/ui/icons";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { useCart } from "@/features/cart/hooks/use-cart";
+import { useCart } from "@/features/cart/use-cart";
 import { CartSheet } from "@/components/cart/cart-sheet";
 
 const navItems = [

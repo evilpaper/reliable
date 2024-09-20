@@ -8,7 +8,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { useCart } from "@/features/cart/hooks/use-cart";
+import { useCart } from "@/features/cart/use-cart";
 
 interface CartSheetProps {
   isCartOpen: boolean;
