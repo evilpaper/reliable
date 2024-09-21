@@ -8,6 +8,13 @@
       "when": 1726924253541,
       "tag": "0000_demonic_marvel_boy",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1726929769361,
+      "tag": "0001_brainy_maginty",
+      "breakpoints": true
     }
   ]
 }

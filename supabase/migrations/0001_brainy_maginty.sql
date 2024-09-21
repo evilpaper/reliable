@@ -1,0 +1,1 @@
+ALTER TABLE "courses_table" ADD COLUMN "course_id" uuid DEFAULT gen_random_uuid();

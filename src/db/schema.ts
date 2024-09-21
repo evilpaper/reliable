@@ -5,10 +5,12 @@ import {
   text,
   timestamp,
   boolean,
+  uuid,
 } from "drizzle-orm/pg-core";
 
 export const coursesTable = pgTable("courses_table", {
   id: serial("id").primaryKey(),
+  courseId: uuid("course_id").defaultRandom(),
   name: text("name").notNull(),
   description: text("description").notNull(),
   avilableForPuschase: boolean("available_for_purchase").notNull(),
