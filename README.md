@@ -1,6 +1,6 @@
 # Reliable
 
-Reliable is an online training provider. Offering tailor made industry specific workplace compliance courses for workers on the fly.
+Reliable is an online training provider offering tailor made industry specific workplace compliance courses for workers on the fly.
 
 # Tech stack
 
@@ -14,6 +14,14 @@ Reliable is an online training provider. Offering tailor made industry specific 
 - Playwright
 
 # Local setup
+
+### 1. Install dependencies
+
+Use pnpm to install dependencies.
+
+```
+pnpm install
+```
 
 # Structure
 
