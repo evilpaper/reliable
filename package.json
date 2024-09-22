@@ -6,7 +6,9 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db-migration-generate": "npx drizzle-kit generate",
+    "db-migration-run": "npx drizzle-kit migrate"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.1",
