@@ -72,7 +72,7 @@ export function Nav() {
             </SheetContent>
           </Sheet>
         </section>
-        <Link href="/" className="text-xl">
+        <Link href="/" className="text-xl border-b-2 border-white">
           Reliable
         </Link>
       </div>
@@ -86,7 +86,7 @@ export function Nav() {
                 "px-3 py-2 text-sm",
                 `/${name.toLowerCase()}` === `${pathName}`
                   ? `border-b-2 border-black`
-                  : `border-none`
+                  : `border-b-2 border-white`
               )}
             >
               {name}
