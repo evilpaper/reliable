@@ -28,17 +28,20 @@ const uniqueSellingPoints = [
   },
 ];
 
-export function CourseCard() {
+interface Props {
+  name: string;
+  description: string;
+  priceInSEK: number;
+}
+
+export function CourseCard({ name, description, priceInSEK }: Props) {
   const { addToCart } = useCart();
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Level 2 Food Hygiene and Safety for Cater</CardTitle>
-        <CardDescription>
-          Ensures your staff comply with the requirements of the UK Food Safety
-          Act.
-        </CardDescription>
+        <CardTitle>{name}</CardTitle>
+        <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
         <ul>
@@ -54,7 +57,7 @@ export function CourseCard() {
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button variant="secondary" className="px-3 shadow-none">
-          £20 + VAT
+          {priceInSEK}
         </Button>
         <Button
           onClick={() =>
