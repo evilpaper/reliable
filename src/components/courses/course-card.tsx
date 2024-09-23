@@ -57,7 +57,7 @@ export function CourseCard({ name, description, priceInSEK }: Props) {
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button variant="secondary" className="px-3 shadow-none">
-          {priceInSEK}
+          {`${priceInSEK} SEK`}
         </Button>
         <Button
           onClick={() =>

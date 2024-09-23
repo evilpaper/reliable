@@ -1,3 +1,4 @@
+import { CourseCard } from "@/components/courses/course-card";
 import { getCourses } from "@/db/queries/course";
 
 export default async function Page() {
@@ -5,8 +6,15 @@ export default async function Page() {
 
   return (
     <>
-      {courses.map((course) => {
-        return <p key={course.id}>{course.name}</p>;
+      {courses.map(({ name, courseId, priceInSEK, description }) => {
+        return (
+          <CourseCard
+            key={courseId}
+            name={name}
+            priceInSEK={priceInSEK}
+            description={description}
+          />
+        );
       })}
     </>
   );
