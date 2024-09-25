@@ -26,6 +26,10 @@ const uniqueSellingPoints = [
     usp: "Instant assessment and result",
     id: crypto.randomUUID(),
   },
+  {
+    usp: "Certification upon completion",
+    id: crypto.randomUUID(),
+  },
 ];
 
 interface Props {
@@ -40,7 +44,7 @@ export function CourseCard({ name, description, priceInSEK }: Props) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{name}</CardTitle>
+        <CardTitle className="text-2xl">{name}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
@@ -48,7 +52,7 @@ export function CourseCard({ name, description, priceInSEK }: Props) {
           {uniqueSellingPoints.map(({ usp, id }) => {
             return (
               <li key={id} className="flex gap-2 py-2">
-                <Icons.badgeCheck />
+                <Icons.badgeCheck className="mt-px h-5 w-5" />
                 {usp}
               </li>
             );
@@ -56,9 +60,7 @@ export function CourseCard({ name, description, priceInSEK }: Props) {
         </ul>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button variant="secondary" className="px-3 shadow-none">
-          {`${priceInSEK} SEK`}
-        </Button>
+        <span>{`${priceInSEK} SEK + VAT`}</span>
         <Button
           onClick={() =>
             addToCart("123456", "Level 2 Food Hygiene and Safety for Cater")
