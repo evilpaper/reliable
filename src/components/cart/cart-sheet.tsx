@@ -20,53 +20,54 @@ export function CartSheet({ isCartOpen, setIsCartOpen }: CartSheetProps) {
 
   return (
     <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
-      <SheetContent side="right">
-        <SheetHeader className="self-start text-left mb-6 h-full">
+      <SheetContent side="right" className="flex flex-col">
+        <SheetHeader className="text-left mb-6">
           <SheetTitle>Cart</SheetTitle>
-          <SheetDescription className="flex flex-col justify-between h-full">
-            <ul>
-              {cartContent.length > 0 &&
-                cartContent.map(
-                  ({ courseId, courseName, quantity, priceInSEK }) => {
-                    return (
-                      <li key={courseId}>
-                        <Card>
-                          <CardHeader>
-                            <CardTitle>{courseName}</CardTitle>
-                          </CardHeader>
-                          <CardContent className="grid gap-4 flex">
-                            <div className="flex items-center gap-6 py-2n justify-between w-full">
-                              <span>{`${priceInSEK} SEK + VAT`}</span>
-                              <div className="flex items-center gap-6 py-2n">
-                                <Button
-                                  variant="outline"
-                                  size="icon"
-                                  onClick={() => removeFromCart(courseId)}
-                                >
-                                  <Icons.subtract className="h-4 w-4" />
-                                </Button>
-                                {quantity}
-                                <Button
-                                  variant="outline"
-                                  size="icon"
-                                  onClick={() =>
-                                    addToCart(courseId, courseName, priceInSEK)
-                                  }
-                                >
-                                  <Icons.add className="h-4 w-4" />
-                                </Button>
-                              </div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      </li>
-                    );
-                  }
-                )}
-            </ul>
-            <Button>To checkout</Button>
-          </SheetDescription>
+          <SheetDescription>Need to pay different VAT?</SheetDescription>
         </SheetHeader>
+        <div className="flex flex-col justify-between h-full">
+          <ul>
+            {cartContent.length > 0 &&
+              cartContent.map(
+                ({ courseId, courseName, quantity, priceInSEK }) => {
+                  return (
+                    <li key={courseId}>
+                      <Card>
+                        <CardHeader>
+                          <CardTitle>{courseName}</CardTitle>
+                        </CardHeader>
+                        <CardContent className="grid gap-4 flex">
+                          <div className="flex items-center gap-6 py-2n justify-between w-full">
+                            <span>{`${priceInSEK} SEK + VAT`}</span>
+                            <div className="flex items-center gap-6 py-2n">
+                              <Button
+                                variant="outline"
+                                size="icon"
+                                onClick={() => removeFromCart(courseId)}
+                              >
+                                <Icons.subtract className="h-4 w-4" />
+                              </Button>
+                              {quantity}
+                              <Button
+                                variant="outline"
+                                size="icon"
+                                onClick={() =>
+                                  addToCart(courseId, courseName, priceInSEK)
+                                }
+                              >
+                                <Icons.add className="h-4 w-4" />
+                              </Button>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </li>
+                  );
+                }
+              )}
+          </ul>
+          <Button>To checkout</Button>
+        </div>
       </SheetContent>
     </Sheet>
   );
