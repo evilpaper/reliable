@@ -63,7 +63,11 @@ export function CourseCard({ name, description, priceInSEK }: Props) {
         <span>{`${priceInSEK} SEK + VAT`}</span>
         <Button
           onClick={() =>
-            addToCart("123456", "Level 2 Food Hygiene and Safety for Cater")
+            addToCart(
+              "123456",
+              "Level 2 Food Hygiene and Safety for Cater",
+              299
+            )
           }
         >
           Buy course

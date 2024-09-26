@@ -26,36 +26,43 @@ export function CartSheet({ isCartOpen, setIsCartOpen }: CartSheetProps) {
           <SheetDescription>
             <ul>
               {cartContent.length > 0 &&
-                cartContent.map(({ courseId, courseName, quantity }) => {
-                  return (
-                    <li key={courseId}>
-                      <Card>
-                        <CardHeader>
-                          <CardTitle>{courseName}</CardTitle>
-                        </CardHeader>
-                        <CardContent className="grid gap-4 flex justify-end">
-                          <div className="flex items-center gap-6 py-2">
-                            <Button
-                              variant="outline"
-                              size="icon"
-                              onClick={() => removeFromCart(courseId)}
-                            >
-                              <Icons.subtract className="h-4 w-4" />
-                            </Button>
-                            {quantity}
-                            <Button
-                              variant="outline"
-                              size="icon"
-                              onClick={() => addToCart(courseId, courseName)}
-                            >
-                              <Icons.add className="h-4 w-4" />
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </li>
-                  );
-                })}
+                cartContent.map(
+                  ({ courseId, courseName, quantity, priceInSEK }) => {
+                    return (
+                      <li key={courseId}>
+                        <Card>
+                          <CardHeader>
+                            <CardTitle>{courseName}</CardTitle>
+                          </CardHeader>
+                          <CardContent className="grid gap-4 flex">
+                            <div className="flex items-center gap-6 py-2n justify-between w-full">
+                              <span>{`${priceInSEK} SEK + VAT`}</span>
+                              <div className="flex items-center gap-6 py-2n">
+                                <Button
+                                  variant="outline"
+                                  size="icon"
+                                  onClick={() => removeFromCart(courseId)}
+                                >
+                                  <Icons.subtract className="h-4 w-4" />
+                                </Button>
+                                {quantity}
+                                <Button
+                                  variant="outline"
+                                  size="icon"
+                                  onClick={() =>
+                                    addToCart(courseId, courseName, priceInSEK)
+                                  }
+                                >
+                                  <Icons.add className="h-4 w-4" />
+                                </Button>
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </li>
+                    );
+                  }
+                )}
             </ul>
           </SheetDescription>
         </SheetHeader>

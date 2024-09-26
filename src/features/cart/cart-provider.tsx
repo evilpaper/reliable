@@ -5,13 +5,18 @@ import React from "react";
 type CourseId = string;
 type CourseName = string;
 
-type AddToCart = (courseid: CourseId, courseName: CourseName) => void;
+type AddToCart = (
+  courseId: CourseId,
+  courseName: CourseName,
+  priceInSEK: number
+) => void;
 type RemoveFromCart = (courseId: CourseId) => void;
 
 type CartItem = {
   courseName: CourseName;
   courseId: CourseId;
   quantity: number;
+  priceInSEK: number;
 };
 
 type CartContent = CartItem[];
@@ -74,19 +79,25 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const createNewItem = (
     courseId: CourseId,
-    courseName: CourseName
+    courseName: CourseName,
+    priceInSEK: number
   ): CartItem => ({
-    courseName,
     courseId,
+    courseName,
     quantity: 1,
+    priceInSEK,
   });
 
-  const addToCart = (courseId: CourseId, courseName: CourseName) => {
+  const addToCart = (
+    courseId: CourseId,
+    courseName: CourseName,
+    priceInSEK: number
+  ) => {
     setCartContent((prevCart) => {
       const existingItem = findExistingItem(prevCart, courseId);
 
       if (!existingItem) {
-        return [...prevCart, createNewItem(courseId, courseName)];
+        return [...prevCart, createNewItem(courseId, courseName, priceInSEK)];
       }
 
       return prevCart.map((item) => {
