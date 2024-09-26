@@ -21,9 +21,9 @@ export function CartSheet({ isCartOpen, setIsCartOpen }: CartSheetProps) {
   return (
     <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
       <SheetContent side="right">
-        <SheetHeader className="self-start text-left mb-6">
+        <SheetHeader className="self-start text-left mb-6 h-full">
           <SheetTitle>Cart</SheetTitle>
-          <SheetDescription>
+          <SheetDescription className="flex flex-col justify-between h-full">
             <ul>
               {cartContent.length > 0 &&
                 cartContent.map(
@@ -64,6 +64,7 @@ export function CartSheet({ isCartOpen, setIsCartOpen }: CartSheetProps) {
                   }
                 )}
             </ul>
+            <Button>To checkout</Button>
           </SheetDescription>
         </SheetHeader>
       </SheetContent>
