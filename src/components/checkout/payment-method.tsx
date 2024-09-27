@@ -24,9 +24,7 @@ export function PaymentMethod() {
     <Card>
       <CardHeader>
         <CardTitle>Payment Method</CardTitle>
-        <CardDescription>
-          Add a new payment method to your account.
-        </CardDescription>
+        <CardDescription>Select how you would like to pay</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-6">
         <RadioGroup defaultValue="card" className="grid grid-cols-3 gap-4">
@@ -130,7 +128,7 @@ export function PaymentMethod() {
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full">Continue</Button>
+        <Button className="w-full">Pay</Button>
       </CardFooter>
     </Card>
   );
