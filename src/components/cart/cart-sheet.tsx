@@ -9,6 +9,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { useCart } from "@/features/cart/use-cart";
+import Link from "next/link";
 
 interface CartSheetProps {
   isCartOpen: boolean;
@@ -66,7 +67,11 @@ export function CartSheet({ isCartOpen, setIsCartOpen }: CartSheetProps) {
                 }
               )}
           </ul>
-          <Button>To checkout</Button>
+          <Button asChild onClick={() => setIsCartOpen(false)}>
+            <Link href="/checkout">
+              <span>To checkout</span>
+            </Link>
+          </Button>
         </div>
       </SheetContent>
     </Sheet>

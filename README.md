@@ -23,6 +23,12 @@ Use pnpm to install dependencies.
 pnpm install
 ```
 
+# Run in development
+
+```
+npm run dev
+```
+
 # Structure
 
 ## Components
