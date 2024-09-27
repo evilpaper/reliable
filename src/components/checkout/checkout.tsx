@@ -3,7 +3,7 @@
 import { CheckoutCartContent } from "@/components/checkout/checkout-cart-content";
 import { PaymentMethod } from "@/components/checkout/payment-method";
 import { YourInformation } from "@/components/checkout/your-information";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { useCart } from "@/features/cart/use-cart";
 
 export function Checkout() {

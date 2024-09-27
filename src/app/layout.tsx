@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Nav } from "@/components/nav";
+import { Providers } from "@/app/providers";
 import { Footer } from "@/components/footer";
 
 import "@/styles/globals.css";
-import { Providers } from "@/app/providers";
 
 export const metadata: Metadata = {
   title: "Reliable",

@@ -1,6 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Icons } from "@/components/ui/icons";
+import Link from "next/link";
 import {
   Sheet,
   SheetContent,
@@ -8,9 +6,10 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { Icons } from "@/components/ui/icons";
+import { Button } from "@/components/ui/button";
 import { useCart } from "@/features/cart/use-cart";
-import Link from "next/link";
-
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 interface CartSheetProps {
   isCartOpen: boolean;
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
