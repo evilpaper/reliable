@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="flex flex-col items-center justify-between h-screen">
+      <body className="flex flex-col items-center justify-between min-h-lvh">
         <Providers>
           <Nav />
           {children}
