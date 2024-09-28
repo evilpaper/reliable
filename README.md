@@ -29,6 +29,12 @@ pnpm install
 npm run dev
 ```
 
+# Database
+
+The project use Drizzle as ORM.
+
+When making changes in the schema run `npm db:generate` to generate migration. Then run `npm db:migrate` to apply the migration.
+
 # Structure
 
 ## Components

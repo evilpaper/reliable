@@ -13,7 +13,7 @@ export const coursesTable = pgTable("courses_table", {
   courseId: uuid("course_id").defaultRandom(),
   name: text("name").notNull(),
   description: text("description").notNull(),
-  avilableForPuschase: boolean("available_for_purchase").notNull(),
+  availableForPurchase: boolean("available_for_purchase").notNull(),
   priceInSEK: integer("price_in_sek").notNull(),
   imagePath: text("image_path"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
