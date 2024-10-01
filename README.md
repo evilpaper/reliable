@@ -26,7 +26,7 @@ pnpm install
 # Run in development
 
 ```
-npm run dev
+pnpm dev
 ```
 
 # Database
