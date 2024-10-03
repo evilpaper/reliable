@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Icons } from "@/components/ui/icons";
 import { useCart } from "@/features/cart/use-cart";
+import { useRouter } from "next/navigation";
 
 const uniqueSellingPoints = [
   { usp: "100% online training", id: crypto.randomUUID() },
@@ -40,6 +41,7 @@ interface Props {
 
 export function CourseCard({ name, description, priceInSEK }: Props) {
   const { addToCart } = useCart();
+  const router = useRouter();
 
   return (
     <Card>
@@ -62,13 +64,14 @@ export function CourseCard({ name, description, priceInSEK }: Props) {
       <CardFooter className="flex justify-between">
         <span>{`${priceInSEK} SEK + VAT`}</span>
         <Button
-          onClick={() =>
+          onClick={() => {
             addToCart(
               "123456",
               "Level 2 Food Hygiene and Safety for Cater",
               299
-            )
-          }
+            );
+            router.push("/checkout");
+          }}
         >
           Buy course
         </Button>
