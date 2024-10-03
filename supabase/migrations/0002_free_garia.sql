@@ -1,0 +1,1 @@
+ALTER TABLE "courses_table" ALTER COLUMN "course_id" SET NOT NULL;

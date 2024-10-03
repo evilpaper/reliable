@@ -33,7 +33,7 @@ pnpm dev
 
 The project use Drizzle as ORM.
 
-When making changes in the schema run `npm db:generate` to generate migration. Then run `npm db:migrate` to apply the migration.
+When making changes in the schema run `pnpm db:generate` to generate migration. Then run `pnpm db:migrate` to apply the migration.
 
 # Structure
 
