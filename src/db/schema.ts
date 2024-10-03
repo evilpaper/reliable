@@ -10,7 +10,7 @@ import {
 
 export const coursesTable = pgTable("courses_table", {
   id: serial("id").primaryKey(),
-  courseId: uuid("course_id").defaultRandom(),
+  courseId: uuid("course_id").defaultRandom().notNull(),
   name: text("name").notNull(),
   description: text("description").notNull(),
   availableForPurchase: boolean("available_for_purchase").notNull(),

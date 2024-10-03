@@ -34,12 +34,13 @@ const uniqueSellingPoints = [
 ];
 
 interface Props {
+  courseId: string;
   name: string;
   description: string;
   priceInSEK: number;
 }
 
-export function CourseCard({ name, description, priceInSEK }: Props) {
+export function CourseCard({ courseId, name, description, priceInSEK }: Props) {
   const { addToCart } = useCart();
   const router = useRouter();
 
@@ -66,7 +67,7 @@ export function CourseCard({ name, description, priceInSEK }: Props) {
         <Button
           onClick={() => {
             addToCart(
-              "123456",
+              courseId,
               "Level 2 Food Hygiene and Safety for Cater",
               299
             );

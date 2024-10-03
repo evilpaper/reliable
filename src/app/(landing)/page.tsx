@@ -10,6 +10,7 @@ export default async function Page() {
         return (
           <CourseCard
             key={courseId}
+            courseId={courseId}
             name={name}
             priceInSEK={priceInSEK}
             description={description}
