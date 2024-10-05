@@ -18,7 +18,7 @@ import { useCart } from "@/features/cart/use-cart";
 import { CartSheet } from "@/components/cart/cart-sheet";
 
 const navItems = [
-  { name: "Courses", href: "/courses" },
+  { name: "Curriculum", href: "/curriculum" },
   { name: "About", href: "/about" },
 ];
 

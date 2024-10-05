@@ -17,7 +17,7 @@ import {
   X,
   ShoppingCart,
   BadgeCheck,
-  StarIcon,
+  Star,
   Minus,
 } from "lucide-react";
 
@@ -43,7 +43,7 @@ export const Icons = {
   close: X,
   shoppingCart: ShoppingCart,
   badgeCheck: BadgeCheck,
-  star: StarIcon,
+  star: Star,
   apple: (props: IconProps) => (
     <svg role="img" viewBox="0 0 24 24" {...props}>
       <path
