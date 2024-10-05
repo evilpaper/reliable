@@ -5,7 +5,7 @@ import { useCart } from "@/features/cart/use-cart";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export function ActionButtons() {
+export function CallToActions() {
   const { addToCart } = useCart();
   const router = useRouter();
 

@@ -1,5 +1,5 @@
 import { TestimonialCard } from "@/components/testimonial-card";
-import { ActionButtons } from "@/components/landing/action-buttons";
+import { CallToActions } from "@/components/landing/call-to-actions";
 
 export default async function Page() {
   return (
@@ -12,7 +12,7 @@ export default async function Page() {
         Act.
       </p>
       <div className="flex justify-center gap-6">
-        <ActionButtons />
+        <CallToActions />
       </div>
       <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
         <TestimonialCard />
