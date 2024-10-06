@@ -5,11 +5,10 @@ export default async function Page() {
   return (
     <section className="container flex flex-col column gap-6">
       <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-center">
-        <strong>Get job ready in 30 mins</strong>
+        <strong>Vi fixar din personals livsmedelssäkerhetsdiplom.</strong>
       </h1>
       <p className="sm:text-xl md:text-2xl text-center">
-        Ensures your staff comply with the requirements of the UK Food Safety
-        Act.
+        Webbutbildning – Grundkurs i livsmedelshygien
       </p>
       <div className="flex justify-center gap-6">
         <CallToActions />

@@ -18,10 +18,10 @@ export function CallToActions() {
           router.push("/checkout");
         }}
       >
-        Buy course
+        Köp kurs - 299 kr
       </Button>
       <Button asChild variant="secondary">
-        <Link href="/curriculum">See the Curriculum</Link>
+        <Link href="/curriculum">Se kursinnehåll</Link>
       </Button>
     </>
   );
