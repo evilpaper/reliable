@@ -8,7 +8,6 @@ import { useCart } from "@/features/cart/use-cart";
 
 export function Checkout() {
   const { cartContent } = useCart();
-
   const isEmpty = cartContent.length === 0;
 
   if (isEmpty) {

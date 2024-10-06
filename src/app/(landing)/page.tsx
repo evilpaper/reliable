@@ -1,5 +1,5 @@
-import { TestimonialCard } from "@/components/testimonial-card";
 import { CallToActions } from "@/components/landing/call-to-actions";
+import { Testimonials } from "@/components/landing/testimonials";
 
 export default async function Page() {
   return (
@@ -15,8 +15,7 @@ export default async function Page() {
         <CallToActions />
       </div>
       <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-        <TestimonialCard />
-        <TestimonialCard />
+        <Testimonials />
       </div>
     </section>
   );
