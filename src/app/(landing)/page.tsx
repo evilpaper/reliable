@@ -1,5 +1,5 @@
-import { OneColumnÓption } from "@/components/landing/one-column-option";
+import { TwoColumnOption } from "@/components/landing/two-column.option";
 
 export default async function Page() {
-  return <OneColumnÓption />;
+  return <TwoColumnOption />;
 }
