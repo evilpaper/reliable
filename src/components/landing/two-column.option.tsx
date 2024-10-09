@@ -1,14 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { ArrowRight, Star, ThumbsUp } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import Image from "next/image";
 
 export function TwoColumnOption() {
   return (
     <section className="container flex flex-col column gap-6 px-4">
       <div className="grid md:grid-cols-3 gap-8">
-        <div className="md:col-span-2">
+        <div className="md:col-span-2 flex flex-col justify-center gap-4">
           <h1 className="text-5xl font-bold mb-4">
             Grundkurs i livsmedelshygien
           </h1>
@@ -17,7 +17,7 @@ export function TwoColumnOption() {
               {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}
-                  className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                  className="w-4 h-4 fill-yellow-400 text-yellow-400"
                 />
               ))}
             </div>
@@ -26,23 +26,21 @@ export function TwoColumnOption() {
             </span>
           </div>
           <p className="text-xl mb-4">
-            Fixa din personals livsmedelssäkerhetsdiplom. Online. Kursen följer
-            Livsmedelsverkets rekommendationer.
+            Fixa utbilding för din personal. Online. Funkar lika bra på mobil
+            som laptop och desktop. Tar ca 30 min att slutföra. Följer
+            Livsmedelsverkets rekommendationer. Personligt diplom efter slutförd
+            kurs. Studera i eget tempo. Börja och sluta när du vill.
           </p>
+          <section className="flex gap-6">
+            <Button className="w-auto self-start">Se kursinnehåll</Button>
+            <Button variant="secondary" className="w-auto self-start">
+              Prova gratis lektion
+            </Button>
+          </section>
         </div>
         <div>
           <Card>
             <CardContent className="p-6">
-              <div className="flex items-center mb-4">
-                <Image
-                  src="/placeholder.svg"
-                  alt="Baseline"
-                  width={48}
-                  height={48}
-                  className="rounded-full mr-4"
-                />
-                <span className="text-xl font-semibold">Baseline</span>
-              </div>
               <div className="flex items-center mb-4">
                 <Star className="w-6 h-6 fill-yellow-400 text-yellow-400 mr-2" />
                 <span className="text-xl font-semibold">4.8</span>
