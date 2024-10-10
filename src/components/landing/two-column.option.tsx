@@ -1,9 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Icons } from "@/components/ui/icons";
-import { Input } from "@/components/ui/input";
-import { ArrowRight, Star } from "lucide-react";
-import Image from "next/image";
+import { Star } from "lucide-react";
 
 export function TwoColumnOption() {
   return (
