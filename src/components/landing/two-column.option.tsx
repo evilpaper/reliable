@@ -5,10 +5,10 @@ import { Icons } from "@/components/ui/icons";
 export function TwoColumnOption() {
   return (
     <section className="container flex flex-col column gap-6 px-4">
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-3 gap-16">
         <div className="md:col-span-2 flex flex-col justify-center gap-4">
           <h1 className="text-5xl font-bold mb-4">
-            Diplom i livsmedelshygien till din personal
+            Enkel och snabb livsmedelshygienkurs – få diplom direkt
           </h1>
           <div className="flex items-center mb-4">
             <div className="flex">
@@ -24,12 +24,10 @@ export function TwoColumnOption() {
             </span>
           </div>
           <p className="text-xl mb-4">
-            Vi vet att livsmedelshygien inte står högst upp på din lista. Därför
-            har vi skapat den här kursen. Kursen är 100% online, tar ca 30 min
-            att slutföra, följer Livsmedelsverkets rekommendationer och funkar
-            lika bra på mobil som laptop och desktop. Din personal gör kursen i
-            eget tempo. De börja och slutar när de vill. Diplom i din e-post när
-            de är klara.
+            Vi vet att livsmedelshygien inte står högst på din lista. Därför har
+            vi skapat den här kursen. Kursen är 100% online, tar bara 30 minuter
+            och följer Livsmedelsverkets riktlinjer. Genomförs när det passar –
+            på mobil, laptop eller desktop. Diplom direkt vid slutförande.
           </p>
           <section className="flex gap-6">
             <Button className="w-auto self-start">Se kursinnehåll</Button>
@@ -42,10 +40,8 @@ export function TwoColumnOption() {
           <Card>
             <CardContent className="p-6">
               <div className="flex items-center mb-4">
-                <Icons.star className="w-6 h-6 fill-yellow-400 text-yellow-400" />
-                {/* <span className="text-xl font-semibold">4.8</span> */}
                 <span className="text-sm text-gray-600 ml-2">
-                  Ca. 30 min. Diplom direkt vid slutförande.
+                  Diplom direkt vid slutförande.
                 </span>
               </div>
               <div className="bg-yellow-200 text-black font-semibold py-2 px-4 rounded-md mb-4">
@@ -75,13 +71,8 @@ export function TwoColumnOption() {
               </div>
               <Button className="w-full mb-4">Köp kurs - 299 kr</Button>
               <Button variant="secondary" className="w-full mb-4">
-                Testa lektion gratis
+                Prova en gratis lektion
               </Button>
-              <div className="flex justify-between text-sm">
-                <a href="#" className="text-gray-600 hover:underline">
-                  Köp många
-                </a>
-              </div>
             </CardContent>
           </Card>
         </div>
