@@ -47,8 +47,11 @@ export function TwoColumnOption() {
                   Diplom direkt vid slutförande.
                 </span>
               </div>
-              <div className="bg-yellow-200 text-black font-semibold py-2 px-4 rounded-md mb-4">
+              <h1 className="text-3xl font-bold  mb-4">
                 Grundkurs i livsmedelshygien
+              </h1>
+              <div className="bg-yellow-200 py-2 px-4 rounded-md mb-4">
+                Lyssna på valfritt språk
               </div>
               <div className="text-3xl font-bold mb-4">299 kr</div>
               <div className="mb-4">
