@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Icons } from "@/components/ui/icons";
+import Link from "next/link";
 
 export function TwoColumnOption() {
   return (
@@ -30,7 +31,9 @@ export function TwoColumnOption() {
             på mobil, laptop eller desktop. Diplom direkt vid slutförande.
           </p>
           <section className="flex gap-6">
-            <Button className="w-auto self-start">Se kursinnehåll</Button>
+            <Button asChild className="w-auto self-start">
+              <Link href="/curriculum">Se kursinnehåll</Link>
+            </Button>
             <Button variant="secondary" className="w-auto self-start">
               Prova gratis lektion
             </Button>
