@@ -5,13 +5,12 @@ import Link from "next/link";
 
 export function TwoColumnOption() {
   return (
-    <section className="container flex flex-col column gap-6 px-4">
+    <section className="container flex flex-col column gap-6 p-4">
       <div className="grid md:grid-cols-3 gap-16">
         <div className="md:col-span-2 flex flex-col justify-center gap-4">
-          <h1 className="text-5xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Livsmedelshygien på 30 min
           </h1>
-
           <p className="text-xl mb-4">
             Vi vet att livsmedelshygien inte står högst på din lista. Därför har
             vi gjort den här kursen. Kursen är 100% online, tas på vilket språk
@@ -24,10 +23,13 @@ export function TwoColumnOption() {
             behöver för att du inte ska få problem med myndigheter.
           </p>
           <section className="flex gap-6 mb-4">
-            <Button asChild className="w-auto self-start">
+            <Button asChild className="w-auto self-start md:text-lg md:p-6">
               <Link href="/curriculum">Se kursinnehåll</Link>
             </Button>
-            <Button variant="secondary" className="w-auto self-start">
+            <Button
+              variant="secondary"
+              className="w-auto self-start md:text-lg md:p-6"
+            >
               Prova gratis lektion
             </Button>
           </section>
@@ -81,8 +83,10 @@ export function TwoColumnOption() {
                   <p>Följer Livsmedelsverkets rekommendationer</p>
                 </div>
               </div>
-              <Button className="w-full mb-4">Köp kurs - 299 kr</Button>
-              <Button variant="secondary" className="w-full mb-4">
+              <Button className="w-full mb-4 text-base">
+                Köp kurs - 299 kr
+              </Button>
+              <Button variant="secondary" className="w-full mb-4 text-base">
                 Prova gratis lektion
               </Button>
             </CardContent>
