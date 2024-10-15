@@ -1,6 +1,5 @@
 import { CourseCard } from "@/components/courses/course-card";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Icons } from "@/components/ui/icons";
 import Link from "next/link";
 
