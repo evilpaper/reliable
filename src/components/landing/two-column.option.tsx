@@ -9,18 +9,14 @@ export function TwoColumnOption() {
       <div className="grid md:grid-cols-3 gap-16">
         <div className="md:col-span-2 flex flex-col justify-center gap-4">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Livsmedelshygien på 30 min
+            Diplom i livsmedelshygien <br />
+            på 30 min
           </h1>
           <p className="text-xl mb-4">
             Vi vet att livsmedelshygien inte står högst på din lista. Därför har
-            vi gjort den här kursen. Kursen är 100% online, tas på vilket språk
-            som helst och tar bara 30 minuter. Följer givetvis Livsmedelsverkets
-            riktlinjer. Genomförs när det passar dig eller din personal – på
-            mobil, laptop eller desktop. Diplom direkt vid slutförande.
-          </p>
-          <p className="text-xl mb-4">
-            Sov gott om natten i vetskap om att din personal har den kunskap de
-            behöver för att du inte ska få problem med myndigheter.
+            vi gjort den här kursen. 100% online, vilket språk som helst, 30
+            minuter. Följer Livsmedelsverkets riktlinjer. Mobil, laptop eller
+            desktop. Diplom direkt vid slutförande.
           </p>
           <section className="flex gap-6 mb-4">
             <Button asChild className="w-auto self-start md:text-lg md:p-6">
