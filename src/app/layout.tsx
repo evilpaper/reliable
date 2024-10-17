@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { Nav } from "@/components/nav";
 import { Providers } from "@/app/providers";
-import { Footer } from "@/components/footer";
 
 import "@/styles/globals.css";
 
@@ -18,12 +16,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="flex flex-col items-center justify-between min-h-lvh">
-        <Providers>
-          <Nav />
-          {children}
-          <Footer />
-        </Providers>
+      <body>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
