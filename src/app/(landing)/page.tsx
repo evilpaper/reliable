@@ -15,16 +15,16 @@ export default async function Page() {
           </h1>
           <p className="text-xl mb-4 mr-12">
             Vi vet att livsmedelshygien inte står högst upp på din lista. Därför
-            har vi skapat den här kursen. Komplett kurs som följer Livsmedelverkes riktlinjer. 100% online, mobil eller dekstop, slutför på 30 minuter. 
+            har vi skapat den här kursen. Följer Livsmedelverkes riktlinjer. 100% online, mobil eller dekstop, slutför på 30 minuter. 
             Diplom direkt vid slutförande.
           </p>
           <section className="flex gap-6 mb-4">
-            <Button asChild className="w-auto self-start md:text-lg md:p-6">
+            <Button asChild className="w-auto self-start text-base md:p-6">
               <Link href="/curriculum">Se kursinnehåll</Link>
             </Button>
             <Button
               variant="secondary"
-              className="w-auto self-start md:text-lg md:p-6"
+              className="w-auto self-start text-base md:p-6"
             >
               Prova gratis lektion
             </Button>

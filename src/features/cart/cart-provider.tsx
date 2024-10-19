@@ -26,6 +26,8 @@ interface CartContextType {
   removeFromCart: RemoveFromCart;
 }
 
+const STORAGE_KEY_NAME = "reliable-cart";
+
 // Create the context. Provide an empty function as default
 export const CartContext = React.createContext<CartContextType>({
   cartContent: [],
@@ -41,7 +43,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   // Load the cart count from localStorage on initial render
   React.useEffect(() => {
-    const storedCartContent = localStorage.getItem("cart");
+    const storedCartContent = localStorage.getItem(STORAGE_KEY_NAME);
 
     if (storedCartContent) {
       setCartContent(JSON.parse(storedCartContent));
@@ -53,7 +55,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     if (hasLoadedBefore.current) {
       hasLoadedBefore.current = false;
     } else {
-      localStorage.setItem("cart", JSON.stringify(cartContent));
+      localStorage.setItem(STORAGE_KEY_NAME, JSON.stringify(cartContent));
     }
   }, [cartContent]);
 
