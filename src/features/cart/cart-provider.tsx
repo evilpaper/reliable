@@ -2,8 +2,9 @@
 
 import React from "react";
 
-type CourseId = string;
-type CourseName = string;
+export type CourseId = string;
+
+export type CourseName = string;
 
 type AddToCart = (
   courseId: CourseId,
@@ -20,6 +21,13 @@ type CartItem = {
 };
 
 type CartContent = CartItem[];
+
+export type Course = {
+  id: CourseId;
+  name: CourseName;
+  priceInSEK: number;
+};
+
 interface CartContextType {
   cartContent: CartItem[];
   addToCart: AddToCart;

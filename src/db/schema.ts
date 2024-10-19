@@ -21,3 +21,5 @@ export const coursesTable = pgTable("courses_table", {
     .notNull()
     .$onUpdate(() => new Date()),
 });
+
+export type Course = typeof coursesTable.$inferSelect;

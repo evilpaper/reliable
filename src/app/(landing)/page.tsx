@@ -1,9 +1,12 @@
 import { CourseCard } from "@/components/courses/course-card";
 import { Testimonial } from "@/components/landing/testimonial";
 import { Button } from "@/components/ui/button";
+import { getCourseById } from "@/db/queries/course";
 import Link from "next/link";
 
 export default async function Page() {
+  const course = await getCourseById("9c0fbf58-a6f4-48f5-b2d8-8b5a4785ad49");
+
   return (
     <section className="container flex flex-col column gap-24 p-4 pt-24">
       <div className="grid md:grid-cols-3 gap-16">
@@ -15,8 +18,9 @@ export default async function Page() {
           </h1>
           <p className="text-xl mb-4 mr-12">
             Vi vet att livsmedelshygien inte står högst upp på din lista. Därför
-            har vi skapat den här kursen. Följer Livsmedelverkes riktlinjer. 100% online, mobil eller dekstop, slutför på 30 minuter. 
-            Diplom direkt vid slutförande.
+            har vi skapat den här kursen. Följer Livsmedelverkes riktlinjer.
+            100% online, mobil eller dekstop, slutför på 30 minuter. Diplom
+            direkt vid slutförande.
           </p>
           <section className="flex gap-6 mb-4">
             <Button asChild className="w-auto self-start text-base md:p-6">
@@ -31,7 +35,7 @@ export default async function Page() {
           </section>
         </div>
         <div>
-          <CourseCard />
+          {course && <CourseCard {...course} />}
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16">

@@ -5,10 +5,13 @@ import { Icons } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useCart } from "@/features/cart/use-cart";
+import { Course } from "@/db/schema";
 
-export function CourseCard() {
+export function CourseCard(course: Course) {
   const { addToCart } = useCart();
   const router = useRouter();
+
+  const {courseId, name, priceInSEK } = course;
 
   return (
     <Card>
@@ -48,8 +51,7 @@ export function CourseCard() {
         <Button
           className="w-full mb-4 text-base"
           onClick={() => {
-            // TODO: Don't hardcode this. Clean up db as well
-            addToCart("1", "Level 2 Food Hygiene and Safety for Cater", 299);
+            addToCart(courseId, name, priceInSEK);
             router.push("/checkout");
           }}
         >
