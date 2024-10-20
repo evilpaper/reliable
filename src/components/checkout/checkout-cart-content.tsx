@@ -8,6 +8,9 @@ import { useCart } from "@/features/cart/use-cart";
 export function CheckoutCartContent() {
   const { cartContent, addToCart, removeFromCart } = useCart();
 
+  // Calculate total amount
+  const totalAmount = cartContent.reduce((total, item) => total + item.priceInSEK * item.quantity, 0);
+
   return (
     <div className="flex flex-col justify-between h-full">
       <ul>
@@ -48,6 +51,15 @@ export function CheckoutCartContent() {
             );
           })}
       </ul>
+      
+      {cartContent.length > 0 && (
+        <Card className="mt-4">
+          <CardContent className="flex justify-between items-center py-4">
+            <CardTitle>Total</CardTitle>
+            <span className="text-lg font-bold">{`${totalAmount} SEK + VAT`}</span>
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 }
