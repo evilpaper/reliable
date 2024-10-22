@@ -1,7 +1,6 @@
 "use client";
 
 import { CheckoutCartContent } from "@/components/checkout/checkout-cart-content";
-import { PaymentMethod } from "@/components/checkout/payment-method";
 import { YourInformation } from "@/components/checkout/your-information";
 import { Card, CardContent } from "@/components/ui/card";
 import { useCart } from "@/features/cart/use-cart";
@@ -37,7 +36,6 @@ export function Checkout() {
       </section>
       <section className="flex flex-col gap-4">
         <h1 className="text-3xl font-bold leading-tight">Payment</h1>
-        <PaymentMethod />
       </section>
     </article>
   );
