@@ -25,7 +25,7 @@ export function CourseCard(course: Course) {
           Grundkurs i livsmedelshygien
         </h1>
         <div className="bg-yellow-200 py-2 px-4 rounded-md mb-4">
-          Lyssna på valfritt språk
+          <p className="text-black">Lyssna på valfritt språk</p>
         </div>
         <div className="text-3xl font-bold mb-4">299 kr</div>
         <div className="mb-4">
