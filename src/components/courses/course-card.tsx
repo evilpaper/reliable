@@ -25,7 +25,7 @@ export function CourseCard(course: Course) {
           Grundkurs i livsmedelshygien
         </h1>
         <div className="bg-yellow-200 py-2 px-4 rounded-md mb-4">
-          <p className="text-black">Lyssna på valfritt språk</p>
+          <p className="dtext-black">Lyssna på valfritt språk</p>
         </div>
         <div className="text-3xl font-bold mb-4">299 kr</div>
         <div className="mb-4">
@@ -55,7 +55,7 @@ export function CourseCard(course: Course) {
             router.push("/checkout");
           }}
         >
-          Köp kurs - 299 kr
+           {`Köp kurs - ${priceInSEK} kr`}
         </Button>
         <Button variant="secondary" className="w-full mb-4 text-base">
           Prova gratis lektion

@@ -1,27 +1,25 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Course } from "@/db/schema";
 import { useCart } from "@/features/cart/use-cart";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export function CallToActions() {
+export function BuyCourseButton(course: Course) {
   const { addToCart } = useCart();
   const router = useRouter();
+  
+  const {courseId, name, priceInSEK } = course;
 
   return (
     <>
-      <Button
+      <Button className="text-base md:p-6"
         onClick={() => {
-          // TODO: Don't hardcode this. Clean up db as well
-          addToCart("1", "Level 2 Food Hygiene and Safety for Cater", 299);
+          addToCart(courseId, name, priceInSEK);
           router.push("/checkout");
         }}
       >
-        Köp kurs - 299 kr
-      </Button>
-      <Button asChild variant="secondary">
-        <Link href="/curriculum">Se kursinnehåll</Link>
+        {`Köp kurs - ${priceInSEK} kr`}
       </Button>
     </>
   );

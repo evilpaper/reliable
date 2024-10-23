@@ -1,4 +1,5 @@
 import { CourseCard } from "@/components/courses/course-card";
+import { BuyCourseButton } from "@/components/landing/buy-course-button";
 import { Testimonial } from "@/components/landing/testimonial";
 import { Button } from "@/components/ui/button";
 import { getCourseById } from "@/db/queries/course";
@@ -23,14 +24,15 @@ export default async function Page() {
             direkt vid slutförande.
           </p>
           <section className="flex gap-6 mb-4">
-            <Button asChild className="w-auto self-start text-base md:p-6">
-              <Link href="/curriculum">Se kursinnehåll</Link>
-            </Button>
+            {course && <BuyCourseButton {...course} />}
             <Button
               variant="secondary"
               className="w-auto self-start text-base md:p-6"
             >
               Prova gratis lektion
+            </Button>
+            <Button asChild variant="outline" className="w-auto self-start text-base md:p-6">
+              <Link href="/curriculum">Se kursinnehåll</Link>
             </Button>
           </section>
         </div>
