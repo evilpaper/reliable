@@ -11,7 +11,7 @@ export function CourseCard(course: Course) {
   const { addToCart } = useCart();
   const router = useRouter();
 
-  const {courseId, name, priceInSEK } = course;
+  const { courseId, name, priceInSEK } = course;
 
   return (
     <Card>
@@ -31,7 +31,7 @@ export function CourseCard(course: Course) {
         <div className="mb-4">
           <div className="flex gap-1">
             <Icons.star width={16} />
-            <p>100 % online</p>
+            <p>100% online</p>
           </div>
           <div className="flex gap-1">
             <Icons.star width={16} />
@@ -55,7 +55,7 @@ export function CourseCard(course: Course) {
             router.push("/checkout");
           }}
         >
-           {`Köp kurs - ${priceInSEK} kr`}
+          {`Köp kurs - ${priceInSEK} kr`}
         </Button>
         <Button variant="secondary" className="w-full mb-4 text-base">
           Prova gratis lektion
