@@ -1,11 +1,11 @@
 import {
-  integer,
   pgTable,
   serial,
   text,
   timestamp,
   boolean,
   uuid,
+  integer,
 } from "drizzle-orm/pg-core";
 
 export const coursesTable = pgTable("courses_table", {
@@ -14,7 +14,8 @@ export const coursesTable = pgTable("courses_table", {
   name: text("name").notNull(),
   description: text("description").notNull(),
   availableForPurchase: boolean("available_for_purchase").notNull(),
-  priceInSEK: integer("price_in_sek").notNull(),
+  price: integer("price").notNull(),
+  currency: text("currency").notNull(),
   imagePath: text("image_path"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at")

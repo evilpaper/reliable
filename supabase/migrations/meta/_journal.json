@@ -22,6 +22,48 @@
       "when": 1727984922147,
       "tag": "0002_free_garia",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1729922323125,
+      "tag": "0003_long_wallow",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1729922690830,
+      "tag": "0004_gigantic_paladin",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1729922761133,
+      "tag": "0005_spicy_genesis",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1729922835284,
+      "tag": "0006_narrow_azazel",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1729922968472,
+      "tag": "0007_freezing_darkhawk",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1729923067881,
+      "tag": "0008_dusty_gladiator",
+      "breakpoints": true
     }
   ]
 }

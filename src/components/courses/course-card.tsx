@@ -11,7 +11,7 @@ export function CourseCard(course: Course) {
   const { addToCart } = useCart();
   const router = useRouter();
 
-  const { courseId, name, priceInSEK } = course;
+  const { courseId, name, price } = course;
 
   return (
     <Card>
@@ -51,11 +51,11 @@ export function CourseCard(course: Course) {
         <Button
           className="w-full mb-4 text-base"
           onClick={() => {
-            addToCart(courseId, name, priceInSEK);
+            addToCart(courseId, name, price);
             router.push("/checkout");
           }}
         >
-          {`Köp kurs - ${priceInSEK} kr`}
+          {`Köp kurs - ${price} kr`}
         </Button>
         <Button variant="secondary" className="w-full mb-4 text-base">
           Prova gratis lektion

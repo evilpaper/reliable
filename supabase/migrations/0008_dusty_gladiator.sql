@@ -1,0 +1,1 @@
+ALTER TABLE "courses_table" ADD COLUMN "currency" text;

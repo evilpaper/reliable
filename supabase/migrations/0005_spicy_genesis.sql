@@ -1,0 +1,1 @@
+ALTER TABLE "courses_table" ALTER COLUMN "currency" SET DEFAULT 'SEK';

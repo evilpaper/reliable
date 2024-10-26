@@ -1,0 +1,1 @@
+ALTER TABLE "courses_table" DROP COLUMN IF EXISTS "currency";

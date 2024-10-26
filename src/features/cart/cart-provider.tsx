@@ -9,7 +9,7 @@ export type CourseName = string;
 type AddToCart = (
   courseId: CourseId,
   courseName: CourseName,
-  priceInSEK: number
+  price: number
 ) => void;
 type RemoveFromCart = (courseId: CourseId) => void;
 
@@ -25,7 +25,7 @@ type CartContent = CartItem[];
 export type Course = {
   id: CourseId;
   name: CourseName;
-  priceInSEK: number;
+  price: number;
 };
 
 interface CartContextType {
