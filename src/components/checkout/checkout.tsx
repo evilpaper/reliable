@@ -4,8 +4,13 @@ import { CheckoutCartContent } from "@/components/checkout/checkout-cart-content
 import { YourInformation } from "@/components/checkout/your-information";
 import { Card, CardContent } from "@/components/ui/card";
 import { useCart } from "@/features/cart/use-cart";
+import { loadStripe } from "@stripe/stripe-js"
 
-export function Checkout() {
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string
+)
+
+export function Checkout({ clientSecret }: { clientSecret: string }) {
   const { cartContent } = useCart();
   const isEmpty = cartContent.length === 0;
 

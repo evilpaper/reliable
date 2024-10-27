@@ -35,8 +35,6 @@ The project use Drizzle as ORM.
 
 When making changes in the schema run `pnpm db:generate` to generate migration. Then run `pnpm db:migrate` to apply the migration.
 
-# Structure
-
 ## Components
 
 shadcn/ui is used for basic UI components. Each shadcn/ui components go into the `/components/ui` folder.
@@ -45,3 +43,26 @@ Custom components, usually made up of shadcn/ui components, lives directly under
 # Environment variables
 
 The environment variables are stored in the `.env.local` file. `.env.local` is automatically loaded when running `pnpm dev`. It overrides the `.env` file. `.env` is aimed to be used for production. For now it's only placeholders.
+
+# Stripe
+
+The project uses Stripe for payment processing.
+
+Stripe has a server part and a client part.
+In the server part we set up a payment intent. Basically saying "Hey, I intent to purchase something a specific amount".
+
+We do this by:
+SERVER SIDE
+1 - Importing Stripe in the server part (src/app/checkout/page.tsx)
+2 - Create a Stripe object with the secret key
+3 - Create a payment intent with the Stripe object.
+4 - Return the client secret to the client part. The client secret is like an id for the payment intent.
+5 - Create a client component with a form that run on the client with the ´use client´ direction that will use the client secret to confirm the payment intent.
+
+CLIENT SIDE
+1 - Create a stripe object with the public key
+2 - Create a payment element with the stripe object
+3 - Create a form with a submit button
+4 - In the submit function, create a payment intent with the stripe object and the amount from the form.
+5 - Confirm the payment intent with the client secret.
+
