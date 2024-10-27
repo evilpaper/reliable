@@ -9,7 +9,8 @@ export type CourseName = string;
 type AddToCart = (
   courseId: CourseId,
   courseName: CourseName,
-  price: number
+  price: number,
+  currency: string
 ) => void;
 type RemoveFromCart = (courseId: CourseId) => void;
 
@@ -17,7 +18,8 @@ type CartItem = {
   courseName: CourseName;
   courseId: CourseId;
   quantity: number;
-  priceInSEK: number;
+  price: number;
+  currency: string;
 };
 
 type CartContent = CartItem[];
@@ -90,24 +92,27 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const createNewItem = (
     courseId: CourseId,
     courseName: CourseName,
-    priceInSEK: number
+    price: number,
+    currency: string
   ): CartItem => ({
     courseId,
     courseName,
     quantity: 1,
-    priceInSEK,
+    price,
+    currency,
   });
 
   const addToCart = (
     courseId: CourseId,
     courseName: CourseName,
-    priceInSEK: number
+    price: number,
+    currency: string
   ) => {
     setCartContent((prevCart) => {
       const existingItem = findExistingItem(prevCart, courseId);
 
       if (!existingItem) {
-        return [...prevCart, createNewItem(courseId, courseName, priceInSEK)];
+        return [...prevCart, createNewItem(courseId, courseName, price, currency)];
       }
 
       return prevCart.map((item) => {

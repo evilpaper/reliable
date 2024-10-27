@@ -9,13 +9,13 @@ export function CheckoutCartContent() {
   const { cartContent, addToCart, removeFromCart } = useCart();
 
   // Calculate total amount
-  const totalAmount = cartContent.reduce((total, item) => total + item.priceInSEK * item.quantity, 0);
+  const totalAmount = cartContent.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
     <div className="flex flex-col justify-between h-full">
       <ul>
         {cartContent.length > 0 &&
-          cartContent.map(({ courseId, courseName, quantity, priceInSEK }) => {
+          cartContent.map(({ courseId, courseName, quantity, price, currency }) => {
             return (
               <li key={courseId}>
                 <Card>
@@ -24,7 +24,7 @@ export function CheckoutCartContent() {
                   </CardHeader>
                   <CardContent className="grid gap-4 flex">
                     <div className="flex items-center gap-6 py-2n justify-between w-full">
-                      <span>{`${priceInSEK} SEK + VAT`}</span>
+                      <span>{`${price} ${currency}`}</span>
                       <div className="flex items-center gap-6 py-2n">
                         <Button
                           variant="outline"
@@ -37,9 +37,7 @@ export function CheckoutCartContent() {
                         <Button
                           variant="outline"
                           size="icon"
-                          onClick={() =>
-                            addToCart(courseId, courseName, priceInSEK)
-                          }
+                          onClick={() => addToCart(courseId, courseName, price, currency)}
                         >
                           <Icons.add className="h-4 w-4" />
                         </Button>

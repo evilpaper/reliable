@@ -29,7 +29,7 @@ export function CartSheet({ isCartOpen, setIsCartOpen }: CartSheetProps) {
           <ul>
             {cartContent.length > 0 &&
               cartContent.map(
-                ({ courseId, courseName, quantity, priceInSEK }) => {
+                ({ courseId, courseName, quantity, price, currency }) => {
                   return (
                     <li key={courseId}>
                       <Card>
@@ -38,7 +38,7 @@ export function CartSheet({ isCartOpen, setIsCartOpen }: CartSheetProps) {
                         </CardHeader>
                         <CardContent className="grid gap-4 flex">
                           <div className="flex items-center gap-6 py-2n justify-between w-full">
-                            <span>{`${priceInSEK} SEK + VAT`}</span>
+                            <span>{`${price} ${currency}`}</span>
                             <div className="flex items-center gap-6 py-2n">
                               <Button
                                 variant="outline"
@@ -52,7 +52,7 @@ export function CartSheet({ isCartOpen, setIsCartOpen }: CartSheetProps) {
                                 variant="outline"
                                 size="icon"
                                 onClick={() =>
-                                  addToCart(courseId, courseName, priceInSEK)
+                                  addToCart(courseId, courseName, price, currency )
                                 }
                               >
                                 <Icons.add className="h-4 w-4" />

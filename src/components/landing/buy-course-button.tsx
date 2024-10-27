@@ -9,17 +9,17 @@ export function BuyCourseButton(course: Course) {
   const { addToCart } = useCart();
   const router = useRouter();
   
-  const {courseId, name, priceInSEK } = course;
+  const {courseId, name, price, currency } = course;
 
   return (
     <>
       <Button className="text-base md:p-6"
         onClick={() => {
-          addToCart(courseId, name, priceInSEK);
+          addToCart(courseId, name, price, currency);
           router.push("/checkout");
         }}
       >
-        {`Köp kurs - ${priceInSEK} kr`}
+        {`Köp kurs - ${price} ${currency}`}
       </Button>
     </>
   );

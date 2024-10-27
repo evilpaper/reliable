@@ -11,7 +11,7 @@ export function CourseCard(course: Course) {
   const { addToCart } = useCart();
   const router = useRouter();
 
-  const { courseId, name, price } = course;
+  const { courseId, name, price, currency } = course;
 
   return (
     <Card>
@@ -27,7 +27,7 @@ export function CourseCard(course: Course) {
         <div className="bg-yellow-200 py-2 px-4 rounded-md mb-4">
           <p className="dtext-black">Lyssna på valfritt språk</p>
         </div>
-        <div className="text-3xl font-bold mb-4">299 kr</div>
+        <div className="text-3xl font-bold mb-4">{`${price} ${currency}`}</div>
         <div className="mb-4">
           <div className="flex gap-1">
             <Icons.star width={16} />
@@ -51,11 +51,11 @@ export function CourseCard(course: Course) {
         <Button
           className="w-full mb-4 text-base"
           onClick={() => {
-            addToCart(courseId, name, price);
+            addToCart(courseId, name, price, currency);
             router.push("/checkout");
           }}
         >
-          {`Köp kurs - ${price} kr`}
+          {`Köp kurs - ${price} ${currency}`}
         </Button>
         <Button variant="secondary" className="w-full mb-4 text-base">
           Prova gratis lektion
