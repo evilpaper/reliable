@@ -41,3 +41,7 @@ When making changes in the schema run `pnpm db:generate` to generate migration. 
 
 shadcn/ui is used for basic UI components. Each shadcn/ui components go into the `/components/ui` folder.
 Custom components, usually made up of shadcn/ui components, lives directly under the `/components` folder.
+
+# Environment variables
+
+The environment variables are stored in the `.env.local` file. `.env.local` is automatically loaded when running `pnpm dev`. It overrides the `.env` file. `.env` is aimed to be used for production. For now it's only placeholders.
