@@ -6,12 +6,21 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useCart } from "@/features/cart/use-cart";
 import { Course } from "@/db/schema";
+import React from "react";
 
 export function CourseCard(course: Course) {
   const { addToCart } = useCart();
   const router = useRouter();
 
   const { courseId, name, price, currency } = course;
+
+  React.useEffect(() => {
+    fetch("./api/create-payment-intent").then((res) =>
+      res.json().then((data) => {
+        console.log(data);
+      })
+    );
+  }, []);
 
   return (
     <Card>
