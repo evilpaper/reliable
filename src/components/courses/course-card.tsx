@@ -14,14 +14,6 @@ export function CourseCard(course: Course) {
 
   const { courseId, name, price, currency } = course;
 
-  React.useEffect(() => {
-    fetch("./api/create-payment-intent").then((res) =>
-      res.json().then((data) => {
-        console.log(data);
-      })
-    );
-  }, []);
-
   return (
     <Card>
       <CardContent className="p-6">
