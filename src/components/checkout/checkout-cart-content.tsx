@@ -9,50 +9,57 @@ export function CheckoutCartContent() {
   const { cartContent, addToCart, removeFromCart } = useCart();
 
   // Calculate total amount
-  const totalAmount = cartContent.reduce((total, item) => total + item.price * item.quantity, 0);
+  const totalAmount = cartContent.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
 
   return (
     <div className="flex flex-col justify-between h-full">
       <ul>
         {cartContent.length > 0 &&
-          cartContent.map(({ courseId, courseName, quantity, price, currency }) => {
-            return (
-              <li key={courseId}>
-                <Card>
-                  <CardHeader>
-                    <CardTitle>{courseName}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="grid gap-4 flex">
-                    <div className="flex items-center gap-6 py-2n justify-between w-full">
-                      <span>{`${price} ${currency}`}</span>
-                      <div className="flex items-center gap-6 py-2n">
-                        <Button
-                          variant="outline"
-                          size="icon"
-                          onClick={() => removeFromCart(courseId)}
-                        >
-                          <Icons.subtract className="h-4 w-4" />
-                        </Button>
-                        {quantity}
-                        <Button
-                          variant="outline"
-                          size="icon"
-                          onClick={() => addToCart(courseId, courseName, price, currency)}
-                        >
-                          <Icons.add className="h-4 w-4" />
-                        </Button>
+          cartContent.map(
+            ({ courseId, courseName, quantity, price, currency }) => {
+              return (
+                <li key={courseId}>
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>{courseName}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="grid gap-4 flex">
+                      <div className="flex items-center gap-6 py-2n justify-between w-full">
+                        <span>{`${price} ${currency}`}</span>
+                        <div className="flex items-center gap-6 py-2n">
+                          <Button
+                            variant="outline"
+                            size="icon"
+                            onClick={() => removeFromCart(courseId)}
+                          >
+                            <Icons.subtract className="h-4 w-4" />
+                          </Button>
+                          {quantity}
+                          <Button
+                            variant="outline"
+                            size="icon"
+                            onClick={() =>
+                              addToCart(courseId, courseName, price, currency)
+                            }
+                          >
+                            <Icons.add className="h-4 w-4" />
+                          </Button>
+                        </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </li>
-            );
-          })}
+                    </CardContent>
+                  </Card>
+                </li>
+              );
+            }
+          )}
       </ul>
-      
+
       {cartContent.length > 0 && (
-        <Card className="mt-4">
-          <CardContent className="flex justify-between items-center py-4">
+        <Card className="mt-4 md:w-1/2 md:self-end">
+          <CardContent className="flex justify-between items-center py-4 ">
             <CardTitle>Total</CardTitle>
             <span className="text-lg font-bold">{`${totalAmount} SEK + VAT`}</span>
           </CardContent>
