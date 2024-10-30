@@ -2,7 +2,13 @@
 
 import { CheckoutCartContent } from "@/components/checkout/checkout-cart-content";
 import { YourInformation } from "@/components/checkout/your-information";
-import { Card, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
 import { useCart } from "@/features/cart/use-cart";
 import { loadStripe } from "@stripe/stripe-js";
 import {
@@ -12,6 +18,7 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import React from "react";
+import { Button } from "@/components/ui/button";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string
@@ -21,11 +28,13 @@ export function Checkout() {
   const { cartContent } = useCart();
   const [clientSecret, setClientSecret] = React.useState("");
 
+  const { price, currency } = cartContent[0];
+
   React.useEffect(() => {
     fetch("api/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: 99, currency: "USD" }),
+      body: JSON.stringify({ amount: price, currency: currency }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -68,7 +77,7 @@ export function Checkout() {
         <h1 className="text-3xl font-bold leading-tight">Payment</h1>
         {clientSecret && (
           <Elements options={{ clientSecret }} stripe={stripePromise}>
-            <CheckoutForm />
+            <CheckoutForm price={price} currency={currency} />
           </Elements>
         )}
       </section>
@@ -76,9 +85,35 @@ export function Checkout() {
   );
 }
 
-function CheckoutForm() {
+function CheckoutForm({
+  price,
+  currency,
+}: {
+  price: number;
+  currency: string;
+}) {
   const stripe = useStripe();
   const elements = useElements();
 
-  return <PaymentElement />;
+  return (
+    <form>
+      <Card>
+        <CardHeader>
+          <CardDescription className="text-destructive">Error</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <PaymentElement />
+        </CardContent>
+        <CardFooter>
+          <Button
+            className="w-full"
+            size="lg"
+            disabled={stripe === null || elements === null}
+          >
+            Köp - {price} {currency}
+          </Button>
+        </CardFooter>
+      </Card>
+    </form>
+  );
 }
