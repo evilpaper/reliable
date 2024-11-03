@@ -40,7 +40,7 @@ export function Checkout() {
       .then((data) => {
         setClientSecret(data.clientSecret);
       });
-  }, []);
+  }, [price, currency]);
 
   const isEmpty = cartContent.length === 0;
 
