@@ -10,8 +10,8 @@ export default async function Page() {
 
   return (
     <section className="container flex flex-col column gap-24 p-4 pt-24">
-      <div className="grid md:grid-cols-3 gap-16">
-        <div className="md:col-span-2 flex flex-col justify-center gap-4">
+      <div className="grid lg:grid-cols-3 gap-16">
+        <div className="lg:col-span-2 flex flex-col justify-center gap-4">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-[1.3] md:leading-[1.3] lg:leading-[1.3]">
             Diplom i livsmedelshygien
             <br />
@@ -31,14 +31,16 @@ export default async function Page() {
             >
               Prova gratis lektion
             </Button>
-            <Button asChild variant="outline" className="w-auto self-start text-base md:p-6">
+            <Button
+              asChild
+              variant="outline"
+              className="w-auto self-start text-base md:p-6"
+            >
               <Link href="/curriculum">Se kursinnehåll</Link>
             </Button>
           </section>
         </div>
-        <div>
-          {course && <CourseCard {...course} />}
-        </div>
+        <div>{course && <CourseCard {...course} />}</div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
         <Testimonial />

@@ -48,12 +48,14 @@ export const CartContext = React.createContext<CartContextType>({
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [cartContent, setCartContent] = React.useState<CartContent>([]);
 
-  // Ensure we don't reset the context in development strickt mode when effects run twice.
+  // Ensure we don't reset the context in development strict mode when effects run twice.
   const hasLoadedBefore = React.useRef(true);
 
   // Load the cart count from localStorage on initial render
   React.useEffect(() => {
     const storedCartContent = localStorage.getItem(STORAGE_KEY_NAME);
+
+    console.log("storedCartContent: ", storedCartContent);
 
     if (storedCartContent) {
       setCartContent(JSON.parse(storedCartContent));
@@ -112,7 +114,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       const existingItem = findExistingItem(prevCart, courseId);
 
       if (!existingItem) {
-        return [...prevCart, createNewItem(courseId, courseName, price, currency)];
+        return [
+          ...prevCart,
+          createNewItem(courseId, courseName, price, currency),
+        ];
       }
 
       return prevCart.map((item) => {

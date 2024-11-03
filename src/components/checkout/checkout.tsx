@@ -28,7 +28,12 @@ export function Checkout() {
   const { cartContent } = useCart();
   const [clientSecret, setClientSecret] = React.useState("");
 
-  const { price, currency } = cartContent[0];
+  console.log("cartContent: ", cartContent);
+
+  // const { price, currency} = cartContent[0];
+
+  const price = 299 * 100; // price in Stripe is in Öre
+  const currency = "SEK";
 
   React.useEffect(() => {
     fetch("api/create-payment-intent", {
@@ -66,7 +71,7 @@ export function Checkout() {
   return (
     <article className="container p-4 h-full flex flex-col gap-6 flex-1">
       <section className="flex flex-col gap-4">
-        <h1 className="text-3xl font-bold leading-tight">Basket</h1>
+        {/* <h1 className="text-3xl font-bold leading-tight">Basket</h1> */}
         <CheckoutCartContent />
       </section>
       <section className="flex flex-col gap-4">
