@@ -28,30 +28,24 @@ export function Checkout() {
   const { cartContent } = useCart();
   const [clientSecret, setClientSecret] = React.useState("");
 
-  console.log("cartContent: ", cartContent);
-
-  // const { price, currency} = cartContent[0];
-
-  const price = 299 * 100; // price in Stripe is in Öre
-  const currency = "SEK";
-
   React.useEffect(() => {
-    fetch("api/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: price, currency: currency }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setClientSecret(data.clientSecret);
-      });
-  }, [price, currency]);
+    if (cartContent && cartContent[0]) {
+      const { price, currency} = cartContent[0];
+
+      fetch("api/create-payment-intent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: price * 100, currency: currency }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setClientSecret(data.clientSecret);
+        });
+    }
+  }, [cartContent]);
 
   const isEmpty = cartContent.length === 0;
 
-  // if (clientSecret === undefined) {
-  //   return null;
-  // }
 
   if (isEmpty) {
     return (
@@ -82,7 +76,7 @@ export function Checkout() {
         <h1 className="text-3xl font-bold leading-tight">Payment</h1>
         {clientSecret && (
           <Elements options={{ clientSecret }} stripe={stripePromise}>
-            <CheckoutForm price={price} currency={currency} />
+            <CheckoutForm price={cartContent[0].price} currency={cartContent[0].currency} />
           </Elements>
         )}
       </section>
