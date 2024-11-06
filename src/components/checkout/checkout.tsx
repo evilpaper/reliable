@@ -65,15 +65,12 @@ export function Checkout() {
   return (
     <article className="container p-4 h-full flex flex-col gap-6 flex-1">
       <section className="flex flex-col gap-4">
-        {/* <h1 className="text-3xl font-bold leading-tight">Basket</h1> */}
         <CheckoutCartContent />
       </section>
       <section className="flex flex-col gap-4">
-        <h1 className="text-3xl font-bold leading-tight">Your information</h1>
         <YourInformation />
       </section>
       <section className="flex flex-col gap-4">
-        <h1 className="text-3xl font-bold leading-tight">Payment</h1>
         {clientSecret && (
           <Elements options={{ clientSecret }} stripe={stripePromise}>
             <CheckoutForm price={cartContent[0].price} currency={cartContent[0].currency} />
@@ -98,7 +95,7 @@ function CheckoutForm({
     <form>
       <Card>
         <CardHeader>
-          <CardDescription className="text-destructive">Error</CardDescription>
+          {/** <CardDescription className="text-destructive">Error</CardDescription>  */}
         </CardHeader>
         <CardContent>
           <PaymentElement />
