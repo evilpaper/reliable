@@ -8,6 +8,7 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
+  CardTitle,
 } from "@/components/ui/card";
 import { useCart } from "@/features/cart/use-cart";
 import { loadStripe } from "@stripe/stripe-js";
@@ -63,7 +64,7 @@ export function Checkout() {
   }
 
   return (
-    <article className="container p-4 h-full flex flex-col gap-6 flex-1">
+    <article className="container p-4 h-full flex flex-col gap-6 flex-1 max-w-screen-md">
       <section className="flex flex-col gap-4">
         <CheckoutCartContent />
       </section>
@@ -94,9 +95,9 @@ function CheckoutForm({
   return (
     <form>
       <Card>
-        <CardHeader>
-          {/** <CardDescription className="text-destructive">Error</CardDescription>  */}
-        </CardHeader>
+      <CardHeader>
+        <CardTitle className="text-2xl">Payment</CardTitle>
+      </CardHeader>
         <CardContent>
           <PaymentElement />
         </CardContent>
