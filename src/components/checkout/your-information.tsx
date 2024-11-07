@@ -6,11 +6,11 @@ export function YourInformation() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-2xl">Your information</CardTitle>
+        <CardTitle className="text-2xl">Din information</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-2">
-        <Label htmlFor="email">Email</Label>
-        <Input id="email" type="email" placeholder="Your email" />
+      <CardContent className="space-y-1">
+        <Label htmlFor="email">E-post</Label>
+        <Input id="email" type="email" placeholder="Din e-post" />
       </CardContent>
     </Card>
   );

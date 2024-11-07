@@ -5,7 +5,6 @@ import { YourInformation } from "@/components/checkout/your-information";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -31,7 +30,7 @@ export function Checkout() {
 
   React.useEffect(() => {
     if (cartContent && cartContent[0]) {
-      const { price, currency} = cartContent[0];
+      const { price, currency } = cartContent[0];
 
       fetch("api/create-payment-intent", {
         method: "POST",
@@ -47,6 +46,10 @@ export function Checkout() {
 
   const isEmpty = cartContent.length === 0;
 
+  const totalAmount = cartContent.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
 
   if (isEmpty) {
     return (
@@ -55,7 +58,7 @@ export function Checkout() {
           <h1 className="text-3xl font-bold leading-tight">Basket</h1>
           <Card>
             <CardContent className="p-4">
-              <p>Your cart is empty</p>
+              <p>Din varukorg är tom</p>
             </CardContent>
           </Card>
         </section>
@@ -74,7 +77,10 @@ export function Checkout() {
       <section className="flex flex-col gap-4">
         {clientSecret && (
           <Elements options={{ clientSecret }} stripe={stripePromise}>
-            <CheckoutForm price={cartContent[0].price} currency={cartContent[0].currency} />
+            <CheckoutForm
+              price={totalAmount}
+              currency={cartContent[0].currency}
+            />
           </Elements>
         )}
       </section>
@@ -95,9 +101,9 @@ function CheckoutForm({
   return (
     <form>
       <Card>
-      <CardHeader>
-        <CardTitle className="text-2xl">Payment</CardTitle>
-      </CardHeader>
+        <CardHeader>
+          <CardTitle className="text-2xl">Betalning</CardTitle>
+        </CardHeader>
         <CardContent>
           <PaymentElement />
         </CardContent>
