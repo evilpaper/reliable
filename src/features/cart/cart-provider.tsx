@@ -55,8 +55,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   React.useEffect(() => {
     const storedCartContent = localStorage.getItem(STORAGE_KEY_NAME);
 
-    console.log("storedCartContent: ", storedCartContent);
-
     if (storedCartContent) {
       setCartContent(JSON.parse(storedCartContent));
     }
