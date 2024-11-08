@@ -70,7 +70,7 @@ export function CheckoutCartContent() {
         <CardFooter>
           <div className="flex justify-between w-full">
             <span className="font-bold">Total:</span>
-            <span>{totalAmount.toFixed(2)} SEK</span>
+            <span className="font-bold">{totalAmount.toFixed(2)} SEK</span>
           </div>
         </CardFooter>
       </Card>

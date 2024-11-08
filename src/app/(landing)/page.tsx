@@ -23,7 +23,7 @@ export default async function Page() {
             100% online, mobil eller dekstop, slutför på 30 minuter. Diplom
             direkt vid slutförande.
           </p>
-          <section className="flex gap-6 mb-4">
+          <section className="flex gap-6 mb-4 flex-wrap">
             {course && <BuyCourseButton {...course} />}
             <Button
               variant="secondary"
