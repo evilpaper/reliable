@@ -18,6 +18,10 @@ interface CartSheetProps {
 export function CartSheet({ isCartOpen, setIsCartOpen }: CartSheetProps) {
   const { cartContent, addToCart, removeFromCart } = useCart();
 
+  const totalAmount = cartContent.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
   return (
     <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
       <SheetContent side="right" className="flex flex-col">
@@ -25,7 +29,7 @@ export function CartSheet({ isCartOpen, setIsCartOpen }: CartSheetProps) {
           <SheetTitle>Cart</SheetTitle>
           <SheetDescription>Need to pay different VAT?</SheetDescription>
         </SheetHeader>
-        <div className="flex flex-col justify-between h-full">
+        <section className="flex flex-col justify-between h-full">
           <ul>
             {cartContent.length > 0 &&
               cartContent.map(
@@ -52,7 +56,12 @@ export function CartSheet({ isCartOpen, setIsCartOpen }: CartSheetProps) {
                                 variant="outline"
                                 size="icon"
                                 onClick={() =>
-                                  addToCart(courseId, courseName, price, currency )
+                                  addToCart(
+                                    courseId,
+                                    courseName,
+                                    price,
+                                    currency
+                                  )
                                 }
                               >
                                 <Icons.add className="h-4 w-4" />
@@ -66,12 +75,22 @@ export function CartSheet({ isCartOpen, setIsCartOpen }: CartSheetProps) {
                 }
               )}
           </ul>
-          <Button asChild onClick={() => setIsCartOpen(false)}>
-            <Link href="/checkout">
-              <span>To checkout</span>
-            </Link>
-          </Button>
-        </div>
+          <section>
+            <div className="flex justify-between py-4">
+              <span className="font-bold">Total:</span>
+              <span className="font-bold">{totalAmount.toFixed(2)} SEK</span>
+            </div>
+            <Button
+              asChild
+              onClick={() => setIsCartOpen(false)}
+              className="w-full"
+            >
+              <Link href="/checkout">
+                <span>To checkout</span>
+              </Link>
+            </Button>
+          </section>
+        </section>
       </SheetContent>
     </Sheet>
   );
