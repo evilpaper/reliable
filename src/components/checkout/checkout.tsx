@@ -17,7 +17,7 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const stripePromise = loadStripe(
@@ -97,6 +97,7 @@ function CheckoutForm({
 }) {
   const stripe = useStripe();
   const elements = useElements();
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
@@ -107,14 +108,20 @@ function CheckoutForm({
       return;
     }
 
+    setIsLoading(true);
+
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { error } = await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000",
-      },
-    });
+    const { error } = await stripe
+      .confirmPayment({
+        elements,
+        confirmParams: {
+          // Make sure to change this to your payment completion page
+          return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/stripe/purchase-success`,
+        },
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
   return (
@@ -132,7 +139,7 @@ function CheckoutForm({
             size="lg"
             disabled={stripe === null || elements === null}
           >
-            Köp - {price} {currency}
+            {isLoading ? "Genomför köp...." : `Köp - ${price} ${currency}`}
           </Button>
         </CardFooter>
       </Card>
