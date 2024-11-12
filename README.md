@@ -13,6 +13,16 @@ Reliable is an online training provider offering tailor made industry specific w
 - Supabase
 - Playwright
 
+# Influential functional requirements
+
+- Customers can browse the app without being authenticated.
+- Customers can add course to a shopping cart (with or without authentication).
+- Customers can try a lesson of a course without being authenticated.
+- Customers can be invited to a course via email.
+- Customers can complete a course with only the email, without being authenticated.
+- After purchase customers can decide who the course is for via email.
+- The course content can be consumed in any language. Written or spoken.
+
 # Local setup
 
 ### 1. Install dependencies
@@ -52,6 +62,7 @@ Stripe has a server part and a client part.
 In the server part we set up a payment intent. Basically saying "Hey, I intent to purchase something a specific amount".
 
 We do this by:
+
 SERVER SIDE
 1 - Importing Stripe in the server part (src/app/checkout/page.tsx)
 2 - Create a Stripe object with the secret key
