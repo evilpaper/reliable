@@ -16,12 +16,13 @@ Reliable is an online training provider offering tailor made industry specific w
 # Influential functional requirements
 
 - Customers can browse the app without being authenticated.
-- Customers can add course to a shopping cart (with or without authentication).
-- Customers can try a lesson of a course without being authenticated.
-- Customers can be invited to a course via email.
-- Customers can complete a course with only the email, without being authenticated.
-- After purchase customers can decide who the course is for via email.
+- Customers can add course to a shopping cart, with or without authentication.
+- Customers can try a lesson without being purchase the course.
+- A course can be completed without authentication. Like when you access tickets with email. And maybe a code.
+- A purchased, not started, course can be shared with one email address.
+- Authentication should be possible with only email (magic link, like Claude).
 - The course content can be consumed in any language. Written or spoken.
+- It should be possible to buy a curse with Swedish Swish
 
 # Local setup
 
@@ -76,4 +77,3 @@ CLIENT SIDE
 3 - Create a form with a submit button
 4 - In the submit function, create a payment intent with the stripe object and the amount from the form.
 5 - Confirm the payment intent with the client secret.
-
