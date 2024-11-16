@@ -15,7 +15,7 @@ type AddToCart = (
 
 type RemoveFromCart = (courseId: CourseId) => void;
 
-type ClearCart = () => void
+type ClearCart = () => void;
 
 type CartItem = {
   courseName: CourseName;
@@ -46,20 +46,20 @@ export const CartContext = React.createContext<CartContextType>({
   cartContent: [],
   addToCart: () => {},
   removeFromCart: () => {},
-  clearCart: () => {}
+  clearCart: () => {},
 });
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [cartContent, setCartContent] = React.useState<CartContent>([]);
 
-  // Ensure we don't reset the context in development strict mode when effects run twice.
+  // This is only needed to ensure we don't reset the context in development strict mode when the effects run twice.
   const hasLoadedBefore = React.useRef(true);
 
   // Load the cart count from localStorage on initial render
   React.useEffect(() => {
     const storedCartContent = localStorage.getItem(STORAGE_KEY_NAME);
 
-    if (storedCartContent && storedCartContent.length > 0) {
+    if (storedCartContent) {
       setCartContent(JSON.parse(storedCartContent));
     }
   }, []);
@@ -147,11 +147,13 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   };
 
   const clearCart = () => {
-    setCartContent([])
-  }
+    setCartContent([]);
+  };
 
   return (
-    <CartContext.Provider value={{ cartContent, addToCart, removeFromCart, clearCart }}>
+    <CartContext.Provider
+      value={{ cartContent, addToCart, removeFromCart, clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );

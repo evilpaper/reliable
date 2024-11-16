@@ -103,6 +103,7 @@ function CheckoutForm({
   const stripe = useStripe();
   const elements = useElements();
   const [isLoading, setIsLoading] = useState(false);
+  const { clearCart } = useCart();
 
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
@@ -113,17 +114,14 @@ function CheckoutForm({
 
     setIsLoading(true);
 
-    try {
-      await stripe.confirmPayment({
-        elements,
-        confirmParams: {
-          return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/stripe/purchase-success?activation_id=${activationId}`,
-        },
-      });
-    } catch (error) {
-      console.log("Payment error:", error);
-      setIsLoading(false);
-    }
+    await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/stripe/purchase-success?activation_id=${activationId}`,
+      },
+    });
+
+    setIsLoading(false);
   }
 
   return (
