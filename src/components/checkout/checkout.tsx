@@ -27,6 +27,7 @@ const stripePromise = loadStripe(
 export function Checkout() {
   const { cartContent } = useCart();
   const [clientSecret, setClientSecret] = React.useState("");
+  const [activationId, setActivationId] = React.useState("")
 
   React.useEffect(() => {
     if (cartContent && cartContent[0]) {
@@ -39,6 +40,7 @@ export function Checkout() {
       })
         .then((res) => res.json())
         .then((data) => {
+          setActivationId(data.activationId)
           setClientSecret(data.clientSecret);
         });
     }
@@ -80,6 +82,7 @@ export function Checkout() {
             <CheckoutForm
               price={totalAmount}
               currency={cartContent[0].currency}
+              activationId={activationId}
             />
           </Elements>
         )}
@@ -91,9 +94,11 @@ export function Checkout() {
 function CheckoutForm({
   price,
   currency,
+  activationId,
 }: {
   price: number;
   currency: string;
+  activationId: string;
 }) {
   const stripe = useStripe();
   const elements = useElements();
@@ -116,7 +121,7 @@ function CheckoutForm({
         elements,
         confirmParams: {
           // Make sure to change this to your payment completion page
-          return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/stripe/purchase-success`,
+          return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/stripe/purchase-success?activation_id=${activationId}`,
         },
       })
       .finally(() => {
