@@ -28,9 +28,13 @@ export function Nav() {
   const pathName = usePathname();
   const { cartContent } = useCart();
 
+  // console.log("cartContent from nav: ", cartContent)
+
   const cartQuantity = cartContent.reduce((arr, curr) => {
     return arr + curr.quantity;
   }, 0);
+
+  // console.log("cartQuantity: ", cartQuantity)
 
   return (
     <section className="container z-40 flex items-center gap-6 w-full justify-between md:justify-normal p-4">

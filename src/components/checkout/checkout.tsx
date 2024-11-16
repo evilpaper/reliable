@@ -108,25 +108,24 @@ function CheckoutForm({
     e.preventDefault();
 
     if (!stripe || !elements) {
-      // Stripe.js hasn't yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
 
     setIsLoading(true);
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { error } = await stripe
+    try {
+      await stripe
       .confirmPayment({
         elements,
         confirmParams: {
-          // Make sure to change this to your payment completion page
           return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/stripe/purchase-success?activation_id=${activationId}`,
         },
       })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    } catch (error) {
+      console.log("Payment error:", error)
+      setIsLoading(false);
+    }
+
   }
 
   return (

@@ -12,7 +12,10 @@ type AddToCart = (
   price: number,
   currency: string
 ) => void;
+
 type RemoveFromCart = (courseId: CourseId) => void;
+
+type ClearCart = () => void
 
 type CartItem = {
   courseName: CourseName;
@@ -34,15 +37,16 @@ interface CartContextType {
   cartContent: CartItem[];
   addToCart: AddToCart;
   removeFromCart: RemoveFromCart;
+  clearCart: ClearCart;
 }
 
 const STORAGE_KEY_NAME = "reliable-cart";
 
-// Create the context. Provide an empty function as default
 export const CartContext = React.createContext<CartContextType>({
   cartContent: [],
   addToCart: () => {},
   removeFromCart: () => {},
+  clearCart: () => {}
 });
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
@@ -55,7 +59,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   React.useEffect(() => {
     const storedCartContent = localStorage.getItem(STORAGE_KEY_NAME);
 
-    if (storedCartContent) {
+    if (storedCartContent && storedCartContent.length > 0) {
       setCartContent(JSON.parse(storedCartContent));
     }
   }, []);
@@ -142,8 +146,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
+  const clearCart = () => {
+    setCartContent([])
+  }
+
   return (
-    <CartContext.Provider value={{ cartContent, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cartContent, addToCart, removeFromCart, clearCart }}>
       {children}
     </CartContext.Provider>
   );
