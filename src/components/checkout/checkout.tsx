@@ -27,7 +27,7 @@ const stripePromise = loadStripe(
 export function Checkout() {
   const { cartContent } = useCart();
   const [clientSecret, setClientSecret] = React.useState("");
-  const [activationId, setActivationId] = React.useState("")
+  const [activationId, setActivationId] = React.useState("");
 
   React.useEffect(() => {
     if (cartContent && cartContent[0]) {
@@ -40,7 +40,7 @@ export function Checkout() {
       })
         .then((res) => res.json())
         .then((data) => {
-          setActivationId(data.activationId)
+          setActivationId(data.activationId);
           setClientSecret(data.clientSecret);
         });
     }
@@ -114,18 +114,16 @@ function CheckoutForm({
     setIsLoading(true);
 
     try {
-      await stripe
-      .confirmPayment({
+      await stripe.confirmPayment({
         elements,
         confirmParams: {
           return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/stripe/purchase-success?activation_id=${activationId}`,
         },
-      })
+      });
     } catch (error) {
-      console.log("Payment error:", error)
+      console.log("Payment error:", error);
       setIsLoading(false);
     }
-
   }
 
   return (
