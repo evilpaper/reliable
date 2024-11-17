@@ -103,7 +103,6 @@ function CheckoutForm({
   const stripe = useStripe();
   const elements = useElements();
   const [isLoading, setIsLoading] = useState(false);
-  const { clearCart } = useCart();
 
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();

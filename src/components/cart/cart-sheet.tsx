@@ -86,7 +86,7 @@ export function CartSheet({ isCartOpen, setIsCartOpen }: CartSheetProps) {
               className="w-full"
             >
               <Link href="/checkout">
-                <span>To checkout</span>
+                <span>Till kassan</span>
               </Link>
             </Button>
           </section>
