@@ -24,6 +24,32 @@ Reliable is an online training provider offering tailor made industry specific w
 - The course content can be consumed in any language. Written or spoken.
 - It should be possible to buy a curse with Swedish Swish
 
+# Event storming
+
+## Events - describe what happened
+
+- Customer bought course
+- Customer shared course
+- Attendee started course
+- Attendee completed course
+- Customer get notification that attendee completed course
+
+## Commands - actions that cause an event
+
+- Buy course
+- Share course
+
+## Actors - Who is making these actions?
+
+- Customer = Person in need of course
+- Attendee - The person who undergoe the course
+
+## Systems - Internal or external that react to or trigger events.
+
+- Send email?
+
+-
+
 # Local setup
 
 ### 1. Install dependencies
