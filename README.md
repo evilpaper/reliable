@@ -48,8 +48,6 @@ Reliable is an online training provider offering tailor made industry specific w
 
 - Send email?
 
--
-
 # Local setup
 
 ### 1. Install dependencies
@@ -91,15 +89,17 @@ In the server part we set up a payment intent. Basically saying "Hey, I intent t
 We do this by:
 
 SERVER SIDE
-1 - Importing Stripe in the server part (src/app/checkout/page.tsx)
-2 - Create a Stripe object with the secret key
-3 - Create a payment intent with the Stripe object.
-4 - Return the client secret to the client part. The client secret is like an id for the payment intent.
-5 - Create a client component with a form that run on the client with the ´use client´ direction that will use the client secret to confirm the payment intent.
+
+- Importing Stripe in the server part (src/app/checkout/page.tsx).
+- Create a Stripe object with the secret key.
+- Create a payment intent with the Stripe object.
+- Return the client secret to the client part. The client secret is like an id for the payment intent.
+- Create a client component with a form that run on the client with the ´use client´ direction that will use the client secret to confirm the payment intent.
 
 CLIENT SIDE
-1 - Create a stripe object with the public key
-2 - Create a payment element with the stripe object
-3 - Create a form with a submit button
-4 - In the submit function, create a payment intent with the stripe object and the amount from the form.
-5 - Confirm the payment intent with the client secret.
+
+- Create a stripe object with the public key.
+- Create a payment element with the stripe object.
+- Create a form with a submit button.
+- In the submit function, create a payment intent with the stripe object and the amount from the form.
+- Confirm the payment intent with the client secret.
