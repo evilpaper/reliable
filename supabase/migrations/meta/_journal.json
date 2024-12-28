@@ -64,6 +64,13 @@
       "when": 1729923067881,
       "tag": "0008_dusty_gladiator",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1735371575476,
+      "tag": "0009_perfect_loners",
+      "breakpoints": true
     }
   ]
 }
