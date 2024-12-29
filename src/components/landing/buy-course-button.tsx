@@ -8,12 +8,13 @@ import { useRouter } from "next/navigation";
 export function BuyCourseButton(course: Course) {
   const { addToCart } = useCart();
   const router = useRouter();
-  
-  const {courseId, name, price, currency } = course;
+
+  const { courseId, name, price, currency } = course;
 
   return (
     <>
-      <Button className="text-base md:p-6"
+      <Button
+        className="text-base md:p-6"
         onClick={() => {
           addToCart(courseId, name, price, currency);
           router.push("/checkout");
