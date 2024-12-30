@@ -91,15 +91,20 @@ We do this by:
 SERVER SIDE
 
 - Importing Stripe in the server part (src/app/checkout/page.tsx).
-- Create a Stripe object with the secret key.
-- Create a payment intent with the Stripe object.
+- Create a Stripe object with the secret key (from the environmental variables).
+- Create a payment intent with the Stripe object including the products in the checkout.
 - Return the client secret to the client part. The client secret is like an id for the payment intent.
 - Create a client component with a form that run on the client with the ´use client´ direction that will use the client secret to confirm the payment intent.
 
 CLIENT SIDE
 
-- Create a stripe object with the public key.
-- Create a payment element with the stripe object.
+- Create a stripe promise (object) with the public key (from the environmental variables).
+- Create a payment element from the Stripe SDK an pass in the stripe promise.
+- Send a POST to our stripe backend create-payment-intent, pass in price and currency, get back activationId and clientSecret, store in state
 - Create a form with a submit button.
-- In the submit function, create a payment intent with the stripe object and the amount from the form.
-- Confirm the payment intent with the client secret.
+- In the submit function, use stripe.confirmPayment method, send in elements (from previous steps) and return url with activationId.
+- Create a page for the url in previous step to show "Purchase made" to user.
+
+Here is a funky think. We are not sure the payment has completed yet. We only know we have sent over everything to Stripe. To know the payment
+status we can either ping stripe or wait for stripe to ping us. The later require a POST route on our side that stripe can ping. On Stripe side the procedure is called a webhook.
+Stripe suggest to don't attempt to handle order fulfillment on the client side because user can leave the page. Thus Stripe suggest we use the webhook approach

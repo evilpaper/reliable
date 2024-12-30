@@ -8,13 +8,13 @@ export async function POST(request: NextRequest) {
   try {
     const { amount, currency } = await request.json();
 
-    const activationId = generateActivationId()
+    const activationId = generateActivationId();
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount,
       currency: currency,
       metadata: {
-        activationId
+        activationId,
       },
     });
 
@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       clientSecret: paymentIntent.client_secret,
-      activationId: paymentIntent.metadata.activationId
+      activationId: paymentIntent.metadata.activationId,
     });
   } catch (error) {
     console.error("Error creating payment intent", error);
