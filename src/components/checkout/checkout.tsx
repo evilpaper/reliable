@@ -102,23 +102,37 @@ function CheckoutForm({
 }) {
   const stripe = useStripe();
   const elements = useElements();
+  const [message, setMessage] = React.useState<null | undefined | string>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
 
     if (!stripe || !elements) {
+      // Stripe.js hasn't yet loaded.
+      // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
 
     setIsLoading(true);
 
-    await stripe.confirmPayment({
+    const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/stripe/purchase-success?activation_id=${activationId}`,
+        return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/stripe/purchase-complete?activation_id=${activationId}`,
       },
     });
+
+    // This point will only be reached if there is an immediate error when
+    // confirming the payment. Otherwise, your customer will be redirected to
+    // your `return_url`. For some payment methods like iDEAL, your customer will
+    // be redirected to an intermediate site first to authorize the payment, then
+    // redirected to the `return_url`.
+    if (error.type === "card_error" || error.type === "validation_error") {
+      setMessage(error.message);
+    } else {
+      setMessage("An unexpected error occurred.");
+    }
 
     setIsLoading(false);
   }
@@ -130,6 +144,7 @@ function CheckoutForm({
           <CardTitle className="text-2xl">Betalning</CardTitle>
         </CardHeader>
         <CardContent>
+          {message && <p>{message}</p>}
           <PaymentElement />
         </CardContent>
         <CardFooter>
