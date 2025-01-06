@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "concurrently \"pnpm run dev-server\" \"pnpm run stripe-listen\"",
+    "dev-server": "next dev --turbo",
+    "stripe-listen": "stripe listen --forward-to localhost:3000/api/webhooks/stripe",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -41,6 +43,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "concurrently": "^9.1.2",
     "drizzle-kit": "^0.24.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.9",
