@@ -106,4 +106,6 @@ CLIENT SIDE
 - Create a page for the url in previous step to show the purchase status to user.
 - On this page
 
-Stripe suggest to don't attempt to handle order fulfillment on the client side because user can leave the page. Thus Stripe suggest we use the webhook approach.
+Stripe suggest we don't attempt to handle order fulfillment on the client side because user can leave the page. Thus Stripe suggest we use the webhook approach.
+
+Once we run the Stripe CLI it will output our webhook signing secret. Remember to paste that into the .env file.
