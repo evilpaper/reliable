@@ -104,5 +104,6 @@ CLIENT SIDE
 - Create a form with a submit button.
 - In the submit function, use stripe.confirmPayment method, send in elements (from previous steps) and return url with activationId.
 - Create a page for the url in previous step to show the purchase status to user.
+- On this page
 
 Stripe suggest to don't attempt to handle order fulfillment on the client side because user can leave the page. Thus Stripe suggest we use the webhook approach.
