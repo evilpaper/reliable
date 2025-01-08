@@ -20,7 +20,14 @@ export async function POST(req: NextRequest) {
     process.env.STRIPE_WEBHOOK_SECRET as string
   );
 
-  console.log("event: ", event);
+  if (event.type === "charge.succeeded") {
+    const charge = event.data.object;
+    console.log(charge.metadata);
+    // courseId = "",
+    const amount = charge.amount;
+    const currency = charge.currency;
+    const activationId = charge.metadata.activationId;
+  }
 
   return new NextResponse();
 }

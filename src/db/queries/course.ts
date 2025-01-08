@@ -7,7 +7,7 @@ export function getCourses() {
   return db.select().from(coursesTable);
 }
 
-export function getCourseById(courseId: CourseId) {
+export async function getCourseById(courseId: CourseId) {
   return db
     .select()
     .from(coursesTable)
