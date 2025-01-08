@@ -8,7 +8,11 @@ export async function POST(req: NextRequest) {
 
   /**
    * This is Stripes suggested approach to secure our webhook.
+   * In Stripe each webhook endpoint has a unique signing secret, given by Stripe.
+   * Find the secret in the webhooks section of the Dashboard, or,
+   * if you’re testing locally with the Stripe CLI, from the CLI output with the command stripe listen.
    * It add the endpoints signing secret and verify the request so we know it is from Stripe.
+   * Read more here https://docs.stripe.com/webhooks/quickstart
    */
   const event = await stripe.webhooks.constructEvent(
     await req.text(),
