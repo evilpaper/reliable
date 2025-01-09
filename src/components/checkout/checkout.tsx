@@ -31,12 +31,16 @@ export function Checkout() {
 
   React.useEffect(() => {
     if (cartContent && cartContent[0]) {
-      const { price, currency } = cartContent[0];
+      const { price, currency, courseId } = cartContent[0];
 
       fetch("api/create-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: price * 100, currency: currency }),
+        body: JSON.stringify({
+          amount: price * 100,
+          currency: currency,
+          courseId,
+        }),
       })
         .then((res) => res.json())
         .then((data) => {

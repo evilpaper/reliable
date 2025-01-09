@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
   if (event.type === "charge.succeeded") {
     const charge = event.data.object;
     console.log(charge.metadata);
-    // courseId = "",
+    const courseId = charge.metadata.courseId;
     const amount = charge.amount;
     const currency = charge.currency;
     const activationId = charge.metadata.activationId;

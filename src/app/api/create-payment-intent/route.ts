@@ -6,7 +6,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
 export async function POST(request: NextRequest) {
   try {
-    const { amount, currency } = await request.json();
+    const { amount, currency, courseId } = await request.json();
 
     const activationId = generateActivationId();
 
@@ -15,10 +15,10 @@ export async function POST(request: NextRequest) {
       currency: currency,
       metadata: {
         activationId,
+        courseId,
       },
     });
 
-    // TODO: Should we store it in databse as pending?
     // TODO: Handle more than one item, each item need a unique activationId
 
     return NextResponse.json({
