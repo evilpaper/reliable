@@ -28,6 +28,7 @@ export function Checkout() {
   const { cartContent } = useCart();
   const [clientSecret, setClientSecret] = React.useState("");
   const [activationId, setActivationId] = React.useState("");
+  const [email, setEmail] = useState("");
 
   React.useEffect(() => {
     if (cartContent && cartContent[0]) {
@@ -78,7 +79,7 @@ export function Checkout() {
         <CheckoutCartContent />
       </section>
       <section className="flex flex-col gap-4">
-        <YourInformation />
+        <YourInformation email={email} setEmail={setEmail} />
       </section>
       <section className="flex flex-col gap-4">
         {clientSecret && (

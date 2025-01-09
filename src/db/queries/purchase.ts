@@ -2,7 +2,7 @@ import { db } from "../index";
 import { purchaseTable } from "../schema";
 
 export async function addPurchase(
-  userId: string,
+  purchaserEmail: string,
   courseId: string,
   amount: number,
   currency: string,
@@ -11,7 +11,7 @@ export async function addPurchase(
   return db
     .insert(purchaseTable)
     .values({
-      userId,
+      purchaserEmail,
       courseId,
       amount,
       currency,
