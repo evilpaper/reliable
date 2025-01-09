@@ -25,7 +25,7 @@ export const coursesTable = pgTable("courses_table", {
 
 export const purchaseTable = pgTable("purchase_table", {
   id: serial("id").primaryKey(),
-  userId: uuid("user_id").notNull(),
+  purchaserEmail: text("purchaser_email").notNull(),
   courseId: uuid("course_id").notNull(),
   amount: integer("amount").notNull(),
   currency: text("currency").notNull(),

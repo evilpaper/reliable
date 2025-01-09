@@ -71,6 +71,13 @@
       "when": 1735371575476,
       "tag": "0009_perfect_loners",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1736455877153,
+      "tag": "0010_lethal_hobgoblin",
+      "breakpoints": true
     }
   ]
 }
