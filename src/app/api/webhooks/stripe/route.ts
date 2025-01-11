@@ -28,6 +28,7 @@ export async function POST(req: NextRequest) {
     const amount = charge.amount;
     const currency = charge.currency;
     const activationId = charge.metadata.activationId;
+    const email = charge.billing_details.email;
 
     console.log("charge: ", charge);
 
