@@ -1,7 +1,6 @@
 "use client";
 
 import { CheckoutCartContent } from "@/components/checkout/checkout-cart-content";
-import { YourInformation } from "@/components/checkout/your-information";
 import {
   Card,
   CardContent,
@@ -13,6 +12,7 @@ import { useCart } from "@/features/cart/use-cart";
 import { loadStripe } from "@stripe/stripe-js";
 import {
   Elements,
+  LinkAuthenticationElement,
   PaymentElement,
   useElements,
   useStripe,
@@ -28,7 +28,6 @@ export function Checkout() {
   const { cartContent } = useCart();
   const [clientSecret, setClientSecret] = React.useState("");
   const [activationId, setActivationId] = React.useState("");
-  const [email, setEmail] = useState("");
 
   React.useEffect(() => {
     if (cartContent && cartContent[0]) {
@@ -79,9 +78,6 @@ export function Checkout() {
         <CheckoutCartContent />
       </section>
       <section className="flex flex-col gap-4">
-        <YourInformation email={email} setEmail={setEmail} />
-      </section>
-      <section className="flex flex-col gap-4">
         {clientSecret && (
           <Elements options={{ clientSecret }} stripe={stripePromise}>
             <CheckoutForm
@@ -109,6 +105,7 @@ function CheckoutForm({
   const elements = useElements();
   const [message, setMessage] = React.useState<null | undefined | string>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState("");
 
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
@@ -151,6 +148,11 @@ function CheckoutForm({
         <CardContent>
           {message && <p>{message}</p>}
           <PaymentElement />
+          <div className="mt-4">
+            <LinkAuthenticationElement
+              onChange={(e) => setEmail(e.value.email)}
+            />
+          </div>
         </CardContent>
         <CardFooter>
           <Button
