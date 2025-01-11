@@ -32,7 +32,9 @@ export async function POST(req: NextRequest) {
 
     console.log("charge: ", charge);
 
-    // addPurchase(purchaserEmail, courseId, amount, currency, activationId);
+    if (email) {
+      addPurchase(email, courseId, amount, currency, activationId);
+    }
   }
 
   return new NextResponse();
