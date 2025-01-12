@@ -1,5 +1,6 @@
 import Stripe from "stripe";
 import { Success } from "@/components/stripe/success";
+import { getPurchaseByActivationId } from "@/db/queries/purchase";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
@@ -13,9 +14,14 @@ export default async function Page({
 
   const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
 
+  console.log("paymentIntent: ", paymentIntent);
+
   if (paymentIntent.status !== "succeeded") {
     return <div>Payment failed</div>;
   }
 
-  return <Success activationId={activationId as string} />;
+  const purchase = await getPurchaseByActivationId(activationId as string);
+  const email = purchase ? purchase.purchaserEmail : "Email not found"; // Handle case where purchase is not found
+
+  return <Success activationId={activationId as string} email={email} />;
 }
