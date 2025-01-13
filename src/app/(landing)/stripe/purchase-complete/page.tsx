@@ -9,19 +9,19 @@ export default async function Page({
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
+  // console.log("Page function called with searchParams:", searchParams); // Added logging
+
   const activationId = searchParams.activation_id;
   const paymentIntentId = searchParams.payment_intent as string;
 
   const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
-
-  console.log("paymentIntent: ", paymentIntent);
 
   if (paymentIntent.status !== "succeeded") {
     return <div>Payment failed</div>;
   }
 
   const purchase = await getPurchaseByActivationId(activationId as string);
-  const email = purchase ? purchase.purchaserEmail : "Email not found"; // Handle case where purchase is not found
+  const email = purchase ? purchase.purchaserEmail : "Email not found";
 
   return <Success activationId={activationId as string} email={email} />;
 }

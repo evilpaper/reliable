@@ -29,6 +29,9 @@ export function Checkout() {
   const [clientSecret, setClientSecret] = React.useState("");
   const [activationId, setActivationId] = React.useState("");
 
+  console.log("Checkout is rendered...");
+  console.log("cartContent: ", cartContent);
+
   React.useEffect(() => {
     if (cartContent && cartContent[0]) {
       const { price, currency, courseId } = cartContent[0];
@@ -105,7 +108,6 @@ function CheckoutForm({
   const elements = useElements();
   const [message, setMessage] = React.useState<null | undefined | string>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [email, setEmail] = useState("");
 
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
@@ -149,9 +151,7 @@ function CheckoutForm({
           {message && <p>{message}</p>}
           <PaymentElement />
           <div className="mt-4">
-            <LinkAuthenticationElement
-              onChange={(e) => setEmail(e.value.email)}
-            />
+            <LinkAuthenticationElement />
           </div>
         </CardContent>
         <CardFooter>
