@@ -9,8 +9,6 @@ export default async function Page({
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  // console.log("Page function called with searchParams:", searchParams); // Added logging
-
   const activationId = searchParams.activation_id;
   const paymentIntentId = searchParams.payment_intent as string;
 
