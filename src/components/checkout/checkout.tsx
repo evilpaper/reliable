@@ -29,27 +29,31 @@ export function Checkout() {
   const [clientSecret, setClientSecret] = React.useState("");
   const [activationId, setActivationId] = React.useState("");
 
-  console.log("Checkout is rendered...");
-  console.log("cartContent: ", cartContent);
+  // This is only needed to ensure we don't reset the context in development strict mode when the effects run twice.
+  const hasLoadedBefore = React.useRef(true);
 
   React.useEffect(() => {
-    if (cartContent && cartContent[0]) {
-      const { price, currency, courseId } = cartContent[0];
+    if (hasLoadedBefore.current) {
+      hasLoadedBefore.current = false;
+    } else {
+      if (cartContent && cartContent[0]) {
+        const { price, currency, courseId } = cartContent[0];
 
-      fetch("api/create-payment-intent", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          amount: price * 100,
-          currency: currency,
-          courseId,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setActivationId(data.activationId);
-          setClientSecret(data.clientSecret);
-        });
+        fetch("api/create-payment-intent", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            amount: price * 100,
+            currency: currency,
+            courseId,
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            setActivationId(data.activationId);
+            setClientSecret(data.clientSecret);
+          });
+      }
     }
   }, [cartContent]);
 
