@@ -16,13 +16,14 @@ Reliable is an online training provider offering tailor made industry specific w
 # Influential functional requirements
 
 - Customers can browse the app without being authenticated.
-- Customers can add course to a shopping cart, with or without authentication.
-- Customers can try a lesson without being purchase the course.
-- A course can be completed without authentication. Like when you access tickets with email. And maybe a code.
-- A purchased, not started, course can be shared with one email address.
-- Authentication should be possible with only email (magic link, like Claude).
+- Customers can add one or more courses to a shopping cart, with or without authentication.
+- Customers can shared bought courses that has not been started with employees with email address or phone number.
+- Customers can try a lesson without purchase the course.
+- Courses be completed without authentication using only shared address and an activation code.
+- Authentication require only only email (magic link, like Claude).
 - The course content can be consumed in any language. Written or spoken.
-- It should be possible to buy a curse with Swedish Swish
+- The course content can be read, watched or listen too.
+- Purcase in Sweden can be made with Swish
 
 # Event storming
 
