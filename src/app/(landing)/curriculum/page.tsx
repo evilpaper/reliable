@@ -1,3 +1,5 @@
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+
 const lessons = [
   {
     id: crypto.randomUUID(),
@@ -56,15 +58,27 @@ export default async function Page() {
       <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold">
         Grundkurs i livsmedelshygien
       </h1>
-      {lessons.map(({ id, number, name, content }) => {
-        return (
-          <section key={id} className="py-4">
-            <h1 className="text-3xl font-bold">{number}</h1>
-            <h2 className="text-2xl">{name}</h2>
-            <p>{content}</p>
-          </section>
-        );
-      })}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        {lessons.map(({ id, number, name, content }) => {
+          return (
+            <Card
+              key={id}
+              className="bg-gray-50/50 border-0 rounded-2xl h-full"
+            >
+              <CardContent className="pt-6">
+                <blockquote className="text-1xl text-gray-600 font-normal leading-relaxed">
+                  {content}
+                </blockquote>
+              </CardContent>
+              <CardFooter className="flex items-center gap-3">
+                <span className="text-gray-600 font-medium">
+                  {number} - {name}
+                </span>
+              </CardFooter>
+            </Card>
+          );
+        })}
+      </div>
     </section>
   );
 }
