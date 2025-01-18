@@ -6,7 +6,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
 export async function POST(request: NextRequest) {
   try {
-    const { amount, currency, courseId } = await request.json();
+    const { amount, currency, courseId, items } = await request.json();
 
     const activationId = generateActivationId();
 
@@ -18,6 +18,7 @@ export async function POST(request: NextRequest) {
       metadata: {
         activationId,
         courseId,
+        items,
       },
     });
 
