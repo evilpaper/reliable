@@ -10,8 +10,6 @@ export async function POST(request: NextRequest) {
 
     const activationId = generateActivationId();
 
-    console.log("Generated activationId: ", activationId);
-
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount,
       currency: currency,
