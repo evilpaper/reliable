@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
       metadata: {
         activationId,
         courseId,
-        items,
+        items: JSON.stringify(items),
       },
     });
 
