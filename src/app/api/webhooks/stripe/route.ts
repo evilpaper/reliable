@@ -1,4 +1,4 @@
-import { addPurchase } from "@/db/queries/purchase";
+// import { addPurchase } from "@/db/queries/purchase";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
@@ -22,16 +22,16 @@ export async function POST(req: NextRequest) {
   );
 
   if (event.type === "charge.succeeded") {
-    const charge = event.data.object;
-    const courseId = charge.metadata.courseId;
-    const amount = charge.amount;
-    const currency = charge.currency;
-    const activationId = charge.metadata.activationId;
-    const email = charge.billing_details.email;
-
-    if (email) {
-      addPurchase(email, courseId, amount, currency, activationId);
-    }
+    // const charge = event.data.object;
+    // const courseId = charge.metadata.courseId;
+    // const amount = charge.amount;
+    // const currency = charge.currency;
+    // const activationId = charge.metadata.activationId;
+    // const email = charge.billing_details.email;
+    // This need to be changes to accept multiple items
+    // if (email) {
+    //   addPurchase(email, courseId, amount, currency, activationId);
+    // }
   }
 
   return new NextResponse();
