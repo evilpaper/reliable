@@ -21,8 +21,6 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // TODO: Handle more than one item, each item need a unique activationId
-
     return NextResponse.json({
       clientSecret: paymentIntent.client_secret,
       activationId: paymentIntent.metadata.activationId,

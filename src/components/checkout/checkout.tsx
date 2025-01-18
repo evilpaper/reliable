@@ -37,20 +37,35 @@ export function Checkout() {
       hasLoadedBefore.current = false;
     } else {
       if (cartContent && cartContent[0]) {
-        const { price, currency, courseId } = cartContent[0];
+        const { currency } = cartContent[0];
+
+        const amount = cartContent.reduce(
+          (total, item) => total + item.price * item.quantity,
+          0
+        );
+
+        // Can maybe use cartContent directly here instead of mapping it.
+        const items = cartContent.map((item) => ({
+          courseId: item.courseId,
+          quantity: item.quantity,
+          price: item.price,
+          currency: item.currency,
+        }));
+
+        // Each individual course should have a separate activationId.
 
         fetch("api/create-payment-intent", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            amount: price * 100,
+            amount: amount,
             currency: currency,
-            courseId,
+            items: items,
           }),
         })
           .then((res) => res.json())
           .then((data) => {
-            setActivationId(data.activationId);
+            setActivationId(data.orderId);
             setClientSecret(data.clientSecret);
           });
       }
