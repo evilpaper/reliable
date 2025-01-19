@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
     const activationId = generateActivationId();
 
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: amount,
+      amount: amount * 100, // Stripe says amount is to small so we multiply by 100
       currency: currency,
       metadata: {
         activationId,

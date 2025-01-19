@@ -27,7 +27,7 @@ const stripePromise = loadStripe(
 export function Checkout() {
   const { cartContent } = useCart();
   const [clientSecret, setClientSecret] = React.useState("");
-  const [activationId, setActivationId] = React.useState("");
+  // const [activationId, setActivationId] = React.useState("");
 
   // This is only needed to ensure we don't reset the context in development strict mode when the effects run twice.
   const hasLoadedBefore = React.useRef(true);
@@ -65,7 +65,7 @@ export function Checkout() {
         })
           .then((res) => res.json())
           .then((data) => {
-            setActivationId(data.orderId);
+            // setActivationId(data.orderId);
             setClientSecret(data.clientSecret);
           });
       }
@@ -105,7 +105,7 @@ export function Checkout() {
             <CheckoutForm
               price={totalAmount}
               currency={cartContent[0].currency}
-              activationId={activationId}
+              // activationId={activationId}
             />
           </Elements>
         )}
@@ -117,11 +117,11 @@ export function Checkout() {
 function CheckoutForm({
   price,
   currency,
-  activationId,
-}: {
+}: // activationId,
+{
   price: number;
   currency: string;
-  activationId: string;
+  // activationId: string;
 }) {
   const stripe = useStripe();
   const elements = useElements();
@@ -142,7 +142,7 @@ function CheckoutForm({
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/stripe/purchase-complete?activation_id=${activationId}`,
+        return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/stripe/purchase-complete`,
       },
     });
 
