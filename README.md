@@ -110,3 +110,11 @@ CLIENT SIDE
 Stripe suggest we don't attempt to handle order fulfillment on the client side because user can leave the page. Thus Stripe suggest we use the webhook approach.
 
 Once we run the Stripe CLI it will output our webhook signing secret. Remember to paste that into the .env file.
+
+## Testing Payments
+
+To test Stripe payments, use the following test card details:
+
+- Card Number: 4242 4242 4242 4242
+- Expiration: Any future date
+- CVC: Any 3-digit number
