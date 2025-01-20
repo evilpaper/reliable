@@ -29,32 +29,43 @@ export function Checkout() {
   const [clientSecret, setClientSecret] = React.useState("");
   // const [activationId, setActivationId] = React.useState("");
 
-  // This is only needed to ensure we don't reset the context in development strict mode when the effects run twice.
+  // This is only needed to ensure we don't run the effect twice during development
   const hasLoadedBefore = React.useRef(true);
 
+  // Create a paymentIntent if no peymentIntent exists.
   React.useEffect(() => {
+    const existingPaymentIntentId = sessionStorage.getItem("paymentIntentId");
+
     if (hasLoadedBefore.current) {
       hasLoadedBefore.current = false;
-    } else {
-      if (cartContent && cartContent[0]) {
-        const { currency } = cartContent[0];
+      return;
+    }
 
-        const amount = cartContent.reduce(
-          (total, item) => total + item.price * item.quantity,
-          0
-        );
+    if (existingPaymentIntentId) {
+      return;
+    }
 
-        // Can maybe use cartContent directly here instead of mapping it.
-        const items = cartContent.map((item) => ({
-          courseId: item.courseId,
-          quantity: item.quantity,
-          price: item.price,
-          currency: item.currency,
-        }));
+    if (!cartContent || typeof cartContent[0] === "undefined") {
+      return;
+    }
 
-        // Each individual course should have a separate activationId.
+    const { currency } = cartContent[0];
 
-        fetch("api/create-payment-intent", {
+    const amount = cartContent.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+
+    const items = cartContent.map((item) => ({
+      courseId: item.courseId,
+      quantity: item.quantity,
+      price: item.price,
+      currency: item.currency,
+    }));
+
+    const createPaymentIntent = async () => {
+      try {
+        const response = await fetch("api/create-payment-intent", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -62,15 +73,58 @@ export function Checkout() {
             currency: currency,
             items: items,
           }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            // setActivationId(data.orderId);
-            setClientSecret(data.clientSecret);
-          });
+        });
+        const data = await response.json();
+        setClientSecret(data.clientSecret);
+
+        sessionStorage.setItem("paymentIntentId", data.paymentIntentId);
+      } catch (error) {
+        console.error("Error creating payment intent", error);
       }
-    }
+    };
+    createPaymentIntent();
   }, [cartContent]);
+
+  // React.useEffect(() => {
+  //   if (hasLoadedBefore.current) {
+  //     hasLoadedBefore.current = false;
+  //   } else {
+  //     if (cartContent && cartContent[0]) {
+  //       const { currency } = cartContent[0];
+
+  //       const amount = cartContent.reduce(
+  //         (total, item) => total + item.price * item.quantity,
+  //         0
+  //       );
+
+  //       // Can maybe use cartContent directly here instead of mapping it.
+  //       const items = cartContent.map((item) => ({
+  //         courseId: item.courseId,
+  //         quantity: item.quantity,
+  //         price: item.price,
+  //         currency: item.currency,
+  //       }));
+
+  //       // Each individual course should have a separate activationId.
+
+  //       fetch("api/create-payment-intent", {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify({
+  //           amount: amount,
+  //           currency: currency,
+  //           items: items,
+  //         }),
+  //       })
+  //         .then((res) => res.json())
+  //         .then((data) => {
+  //           console.log("data", data);
+  //           // setActivationId(data.orderId);
+  //           setClientSecret(data.clientSecret);
+  //         });
+  //     }
+  //   }
+  // }, []);
 
   const isEmpty = cartContent.length === 0;
 
