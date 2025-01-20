@@ -42,6 +42,9 @@ export function Checkout() {
     }
 
     if (existingPaymentIntentId) {
+      console.log("PaymentIntent already exists. Don't create a new one.");
+      console.log("clientSecret: ", clientSecret);
+      // fetch the paymentIntent and set the clientSecret.
       return;
     }
 
@@ -76,55 +79,14 @@ export function Checkout() {
         });
         const data = await response.json();
         setClientSecret(data.clientSecret);
-
         sessionStorage.setItem("paymentIntentId", data.paymentIntentId);
+        console.log("PaymentIntent created", data);
       } catch (error) {
         console.error("Error creating payment intent", error);
       }
     };
     createPaymentIntent();
   }, [cartContent]);
-
-  // React.useEffect(() => {
-  //   if (hasLoadedBefore.current) {
-  //     hasLoadedBefore.current = false;
-  //   } else {
-  //     if (cartContent && cartContent[0]) {
-  //       const { currency } = cartContent[0];
-
-  //       const amount = cartContent.reduce(
-  //         (total, item) => total + item.price * item.quantity,
-  //         0
-  //       );
-
-  //       // Can maybe use cartContent directly here instead of mapping it.
-  //       const items = cartContent.map((item) => ({
-  //         courseId: item.courseId,
-  //         quantity: item.quantity,
-  //         price: item.price,
-  //         currency: item.currency,
-  //       }));
-
-  //       // Each individual course should have a separate activationId.
-
-  //       fetch("api/create-payment-intent", {
-  //         method: "POST",
-  //         headers: { "Content-Type": "application/json" },
-  //         body: JSON.stringify({
-  //           amount: amount,
-  //           currency: currency,
-  //           items: items,
-  //         }),
-  //       })
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           console.log("data", data);
-  //           // setActivationId(data.orderId);
-  //           setClientSecret(data.clientSecret);
-  //         });
-  //     }
-  //   }
-  // }, []);
 
   const isEmpty = cartContent.length === 0;
 
