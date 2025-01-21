@@ -45,6 +45,7 @@ export function Checkout() {
       console.log("PaymentIntent already exists. Don't create a new one.");
       console.log("clientSecret: ", clientSecret);
       // fetch the paymentIntent and set the clientSecret.
+
       return;
     }
 
