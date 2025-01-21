@@ -41,11 +41,23 @@ export function Checkout() {
       return;
     }
 
+    const retrievePaymentIntent = async () => {
+      try {
+        const response = await fetch(
+          `/api/retrieve-payment-intent?paymentIntentId=${existingPaymentIntentId}`
+        );
+        const data = await response.json();
+        console.log("PaymentIntent retrieved: ", data);
+        console.log("Setting client secret: ", data.client_secret);
+        setClientSecret(data.client_secret);
+      } catch (error) {
+        console.error("Error retrieving payment intent", error);
+      }
+    };
+
     if (existingPaymentIntentId) {
       console.log("PaymentIntent already exists. Don't create a new one.");
-      console.log("clientSecret: ", clientSecret);
-      // fetch the paymentIntent and set the clientSecret.
-
+      retrievePaymentIntent();
       return;
     }
 
@@ -86,8 +98,11 @@ export function Checkout() {
         console.error("Error creating payment intent", error);
       }
     };
-    createPaymentIntent();
-  }, [cartContent]);
+
+    if (!existingPaymentIntentId) {
+      createPaymentIntent();
+    }
+  }, [cartContent, clientSecret]);
 
   const isEmpty = cartContent.length === 0;
 
