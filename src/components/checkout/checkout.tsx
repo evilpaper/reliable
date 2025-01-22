@@ -41,26 +41,6 @@ export function Checkout() {
       return;
     }
 
-    const retrievePaymentIntent = async () => {
-      try {
-        const response = await fetch(
-          `/api/retrieve-payment-intent?paymentIntentId=${existingPaymentIntentId}`
-        );
-        const data = await response.json();
-        console.log("PaymentIntent retrieved: ", data);
-        console.log("Setting client secret: ", data.client_secret);
-        setClientSecret(data.client_secret);
-      } catch (error) {
-        console.error("Error retrieving payment intent", error);
-      }
-    };
-
-    if (existingPaymentIntentId) {
-      console.log("PaymentIntent already exists. Don't create a new one.");
-      retrievePaymentIntent();
-      return;
-    }
-
     if (!cartContent || typeof cartContent[0] === "undefined") {
       return;
     }
@@ -79,6 +59,19 @@ export function Checkout() {
       currency: item.currency,
     }));
 
+    const retrievePaymentIntent = async () => {
+      try {
+        const response = await fetch(
+          `/api/retrieve-payment-intent?paymentIntentId=${existingPaymentIntentId}`
+        );
+        const data = await response.json();
+        setClientSecret(data.client_secret);
+        console.log("PaymentIntent retrieved: ", data);
+      } catch (error) {
+        console.error("Error retrieving payment intent", error);
+      }
+    };
+
     const createPaymentIntent = async () => {
       try {
         const response = await fetch("api/create-payment-intent", {
@@ -93,7 +86,7 @@ export function Checkout() {
         const data = await response.json();
         setClientSecret(data.clientSecret);
         sessionStorage.setItem("paymentIntentId", data.paymentIntentId);
-        console.log("PaymentIntent created", data);
+        console.log("PaymentIntent created: ", data);
       } catch (error) {
         console.error("Error creating payment intent", error);
       }
@@ -101,6 +94,8 @@ export function Checkout() {
 
     if (!existingPaymentIntentId) {
       createPaymentIntent();
+    } else {
+      retrievePaymentIntent();
     }
   }, [cartContent, clientSecret]);
 
