@@ -27,25 +27,19 @@ const stripePromise = loadStripe(
 export function Checkout() {
   const { cartContent } = useCart();
   const [clientSecret, setClientSecret] = React.useState("");
-  // const [activationId, setActivationId] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
 
-  // This is only needed to ensure we don't run the effect twice during development
+  // Only run the effect once during development to avoid creating several paymentIntents
   const hasLoadedBefore = React.useRef(true);
 
-  // Create a paymentIntent if no peymentIntent exists.
+  // Only create/update payment intent when cart changes
   React.useEffect(() => {
+    if (!cartContent.length) return;
+
     const existingPaymentIntentId = sessionStorage.getItem("paymentIntentId");
-
-    if (hasLoadedBefore.current) {
-      hasLoadedBefore.current = false;
-      return;
-    }
-
-    if (!cartContent || typeof cartContent[0] === "undefined") {
-      return;
-    }
-
-    const { currency } = cartContent[0];
+    setIsLoading(true);
+    setError(null);
 
     const amount = cartContent.reduce(
       (total, item) => total + item.price * item.quantity,
@@ -59,45 +53,41 @@ export function Checkout() {
       currency: item.currency,
     }));
 
-    const retrievePaymentIntent = async () => {
-      try {
-        const response = await fetch(
-          `/api/retrieve-payment-intent?paymentIntentId=${existingPaymentIntentId}`
-        );
-        const data = await response.json();
-        setClientSecret(data.client_secret);
-        console.log("PaymentIntent retrieved: ", data);
-      } catch (error) {
-        console.error("Error retrieving payment intent", error);
-      }
-    };
+    const endpoint = "/api/payment-intent";
 
-    const createPaymentIntent = async () => {
+    async function handlePaymentIntent() {
       try {
-        const response = await fetch("api/create-payment-intent", {
+        const response = await fetch(endpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            amount: amount,
-            currency: currency,
-            items: items,
+            paymentIntentId: existingPaymentIntentId,
+            amount,
+            currency: cartContent[0].currency,
+            items,
           }),
         });
-        const data = await response.json();
-        setClientSecret(data.clientSecret);
-        sessionStorage.setItem("paymentIntentId", data.paymentIntentId);
-        console.log("PaymentIntent created: ", data);
-      } catch (error) {
-        console.error("Error creating payment intent", error);
-      }
-    };
 
-    if (!existingPaymentIntentId) {
-      createPaymentIntent();
-    } else {
-      retrievePaymentIntent();
+        if (!response.ok) {
+          throw new Error("Failed to process payment intent");
+        }
+
+        const data = await response.json();
+
+        if (data.clientSecret) {
+          setClientSecret(data.clientSecret);
+          sessionStorage.setItem("paymentIntentId", data.paymentIntentId);
+        }
+      } catch (error) {
+        setError(error instanceof Error ? error.message : "An error occurred");
+        console.error("Payment intent error:", error);
+      } finally {
+        setIsLoading(false);
+      }
     }
-  }, [cartContent, clientSecret]);
+
+    handlePaymentIntent();
+  }, [cartContent]);
 
   const isEmpty = cartContent.length === 0;
 

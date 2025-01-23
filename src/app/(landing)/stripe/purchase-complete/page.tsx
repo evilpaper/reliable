@@ -18,8 +18,6 @@ export default async function Page({
     return <div>Payment failed</div>;
   }
 
-  console.log("paymentIntent: ", paymentIntent);
-
   // const purchase = await getPurchaseByActivationId(activationId as string);
   // const email = purchase ? purchase.purchaserEmail : "Email not found";
 
