@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import * as React from "react";
+import Image from "next/image";
 import {
   Sheet,
   SheetContent,
@@ -16,7 +17,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/features/cart/use-cart";
 import { CartSheet } from "@/components/cart/cart-sheet";
-import Image from "next/image";
+import reliableLogoSvg from "../../public/reliable-logo.svg";
 
 const navItems = [
   { name: "Curriculum", href: "/curriculum" },
@@ -75,10 +76,11 @@ export function Nav() {
         </section>
         <Link href="/" className="text-xl border-b-2 border-background">
           <Image
-            src="/reliable-logo.svg"
+            src={reliableLogoSvg}
             alt="The Reliable Club"
-            width={120}
-            height={40}
+            width={110}
+            height={38}
+            priority
           />
         </Link>
       </div>
