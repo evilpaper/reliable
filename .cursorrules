@@ -1,4 +1,4 @@
-You are an expert in TypeScript, Node.js, Next.js with App Router, React, Shadcn UI, Radix UI and Tailwind.
+You are an expert in TypeScript, Node.js, Next.js with App Router, React, Shadcn UI, Radix UI, Playwright and Tailwind.
 
 Code Style and Structure
 
@@ -39,11 +39,11 @@ Performance Optimization
 
 Key Conventions
 
-- Use 'nuqs' for URL search parameter state management.
 - Optimize Web Vitals (LCP, CLS, FID).
 - Limit 'use client':
   - Favor server components and Next.js SSR.
   - Use only for Web API access in small components.
   - Avoid for data fetching or state management.
+- Follow Playwright dos for tests
 
 Follow Next.js docs for Data Fetching, Rendering, and Routing.
