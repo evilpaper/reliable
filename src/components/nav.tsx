@@ -16,6 +16,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/features/cart/use-cart";
 import { CartSheet } from "@/components/cart/cart-sheet";
+import Image from "next/image";
 
 const navItems = [
   { name: "Curriculum", href: "/curriculum" },
@@ -28,13 +29,9 @@ export function Nav() {
   const pathName = usePathname();
   const { cartContent } = useCart();
 
-  // console.log("cartContent from nav: ", cartContent)
-
   const cartQuantity = cartContent.reduce((arr, curr) => {
     return arr + curr.quantity;
   }, 0);
-
-  // console.log("cartQuantity: ", cartQuantity)
 
   return (
     <section className="container z-40 flex items-center gap-6 w-full justify-between md:justify-normal p-4">
@@ -77,7 +74,12 @@ export function Nav() {
           </Sheet>
         </section>
         <Link href="/" className="text-xl border-b-2 border-background">
-          Reliable
+          <Image
+            src="/reliable-logo.svg"
+            alt="The Reliable Club"
+            width={120}
+            height={40}
+          />
         </Link>
       </div>
       <section className="flex items-center justify-between md:w-full">
