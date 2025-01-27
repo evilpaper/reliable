@@ -31,11 +31,17 @@ export function Checkout() {
   const [error, setError] = React.useState<string | null>(null);
 
   // Only run the effect once during development to avoid creating several paymentIntents
-  const hasLoadedBefore = React.useRef(true);
+  const hasLoadedBefore = React.useRef(false);
 
   // Only create/update payment intent when cart changes
   React.useEffect(() => {
+    if (process.env.NODE_ENV === "development" && hasLoadedBefore.current) {
+      return;
+    }
+
     if (!cartContent.length) return;
+
+    hasLoadedBefore.current = true;
 
     const existingPaymentIntentId = sessionStorage.getItem("paymentIntentId");
     setIsLoading(true);
