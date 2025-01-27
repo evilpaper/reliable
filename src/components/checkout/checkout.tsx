@@ -96,6 +96,10 @@ export function Checkout() {
     0
   );
 
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
   if (isEmpty) {
     return (
       <article className="container p-4 h-full flex flex-col gap-6 flex-1">
@@ -122,7 +126,6 @@ export function Checkout() {
             <CheckoutForm
               price={totalAmount}
               currency={cartContent[0].currency}
-              // activationId={activationId}
             />
           </Elements>
         )}
