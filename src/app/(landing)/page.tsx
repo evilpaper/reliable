@@ -20,7 +20,7 @@ export default async function Page() {
           <p className="text-xl mb-4 mr-12">
             Vi vet att livsmedelshygien inte står högst upp på din lista. Därför
             har vi skapat den här kursen. Följer Livsmedelverkes riktlinjer.
-            100% online, mobil eller dekstop, slutför på 30 minuter. Diplom
+            100% online, mobil eller desktop, slutför på 30 minuter. Diplom
             direkt vid slutförande.
           </p>
           <section className="flex gap-6 mb-4 flex-wrap">

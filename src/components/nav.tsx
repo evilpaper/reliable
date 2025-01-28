@@ -20,7 +20,7 @@ import { CartSheet } from "@/components/cart/cart-sheet";
 import reliableLogoSvg from "../../public/reliable-logo.svg";
 
 const navItems = [
-  { name: "Curriculum", href: "/curriculum" },
+  { name: "Courses", href: "/courses" },
   { name: "About", href: "/about" },
 ];
 
