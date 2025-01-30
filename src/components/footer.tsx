@@ -1,12 +1,26 @@
 import { ThemeToggle } from "@/components/theme/theme-toggle";
+
 import Image from "next/image";
+import Link from "next/link";
 
 const currentYear = new Date().getFullYear();
 
 export function Footer() {
   return (
-    <footer className="container flex justify-between items-center p-4 py-12">
+    <footer className="container flex flex-col md:flex-row justify-between items-center md:items-start gap-8 md:gap-4  p-4 py-12">
       <p className="text-sm">{`© ${currentYear} The Reliable Club`}</p>
+      <div className="flex flex-col gap-8">
+        <Link
+          href="/policy"
+          className="hover:text-foreground transition-colors"
+        >
+          Privacy Policy
+        </Link>
+        <Link href="/terms" className="hover:text-foreground transition-colors">
+          Terms of Service
+        </Link>
+      </div>
+      <ThemeToggle />
       <Image
         src="/reliable-logo.svg"
         alt="The Reliable Club"
@@ -14,7 +28,6 @@ export function Footer() {
         height={38}
         priority
       />
-      <ThemeToggle />
     </footer>
   );
 }
