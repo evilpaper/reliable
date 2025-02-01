@@ -36,7 +36,7 @@ export default async function Page() {
               variant="outline"
               className="w-auto self-start text-base md:p-6"
             >
-              <Link href="/curriculum">Se kursinnehåll</Link>
+              <Link href="/courses">Se kursinnehåll</Link>
             </Button>
           </section>
         </div>
