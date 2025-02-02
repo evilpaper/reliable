@@ -1,7 +1,7 @@
-import { ThemeToggle } from "@/components/theme/theme-toggle";
-
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
+import reliableLogoBlackSvg from "../../public/reliable-logo-black.svg";
 
 const currentYear = new Date().getFullYear();
 
@@ -22,7 +22,7 @@ export function Footer() {
       </div>
       <ThemeToggle />
       <Image
-        src="/reliable-logo.svg"
+        src={reliableLogoBlackSvg}
         alt="The Reliable Club"
         width={110}
         height={38}
