@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { useCart } from "@/features/cart/use-cart";
 import { CartSheet } from "@/components/cart/cart-sheet";
 import reliableLogoBlackSvg from "../../public/reliable-logo-black.svg";
+import reliableLogoWhiteSvg from "../../public/reliable-logo-white.svg";
 
 const navItems = [
   { name: "Courses", href: "/courses" },
@@ -81,6 +82,15 @@ export function Nav() {
             width={110}
             height={38}
             priority
+            className="block dark:hidden"
+          />
+          <Image
+            src={reliableLogoWhiteSvg}
+            alt="The Reliable Club"
+            width={110}
+            height={38}
+            priority
+            className="hidden dark:block"
           />
         </Link>
       </div>

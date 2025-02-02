@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import reliableLogoBlackSvg from "../../public/reliable-logo-black.svg";
+import reliableLogoWhiteSvg from "../../public/reliable-logo-white.svg";
 
 const currentYear = new Date().getFullYear();
 
@@ -27,6 +28,15 @@ export function Footer() {
         width={110}
         height={38}
         priority
+        className="block dark:hidden"
+      />
+      <Image
+        src={reliableLogoWhiteSvg}
+        alt="The Reliable Club"
+        width={110}
+        height={38}
+        priority
+        className="hidden dark:block"
       />
     </footer>
   );
