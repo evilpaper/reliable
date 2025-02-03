@@ -5,12 +5,12 @@ export default async function Page() {
   const course = await getCourseById("9c0fbf58-a6f4-48f5-b2d8-8b5a4785ad49");
 
   return (
-    <section className="container flex flex-col column gap-4 p-4 pt-16">
-      <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold">
-        Letar du efter diplom i Livsmedelssäkerhet?
+    <section className="container flex flex-col column gap-8 p-4 pt-32 ">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold lg:max-w-[60%]">
+        Lär dig genom att göra!
       </h1>
-      <p className="text-xl mb-4 mr-12">
-        Vi har utbildningar som ger dig den kunskap du behöver. Alla våra
+      <p className="text-xl mb-4 mr-12 lg:max-w-[60%]">
+        I Sverige finns egentligen bara en kurs i livsmedelssäkerhet. Alla våra
         utbildningar gör direkt på webben. Diplom på genomförd utbildning fås
         direkt efter slutförande. Snabbt och effektivt.
       </p>
