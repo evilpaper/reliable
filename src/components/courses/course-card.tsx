@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useCart } from "@/features/cart/use-cart";
 import { Course } from "@/db/schema";
 import React from "react";
+import Link from "next/link";
 
 export function CourseCard(course: Course) {
   const { addToCart } = useCart();
@@ -58,8 +59,10 @@ export function CourseCard(course: Course) {
         >
           {`Köp kurs - ${price} ${currency}`}
         </Button>
-        <Button variant="secondary" className="w-full mb-4 text-base">
-          Prova gratis lektion
+        <Button asChild variant="secondary" className="w-full mb-4 text-base">
+          <Link href="/courses/grundkurs-i-livsmedelshygien">
+            Se kursinnehåll
+          </Link>
         </Button>
       </CardContent>
     </Card>
