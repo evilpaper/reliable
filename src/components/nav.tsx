@@ -20,10 +20,7 @@ import { CartSheet } from "@/components/cart/cart-sheet";
 import reliableLogoBlackSvg from "../../public/reliable-logo-black.svg";
 import reliableLogoWhiteSvg from "../../public/reliable-logo-white.svg";
 
-const navItems = [
-  { name: "Courses", href: "/courses" },
-  { name: "About", href: "/about" },
-];
+const navItems = [{ name: "About", href: "/about" }];
 
 export function Nav() {
   const [isOpen, setIsOpen] = React.useState(false);
