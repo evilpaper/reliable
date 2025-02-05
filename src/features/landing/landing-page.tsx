@@ -11,7 +11,7 @@ interface Props {
 
 export async function LandingPage({ course }: Props) {
   return (
-    <section className="container flex flex-col column gap-24 p-4 pt-24">
+    <section className="container flex flex-col gap-24 p-4 pt-24">
       <div className="grid lg:grid-cols-3 gap-16">
         <div className="lg:col-span-2 flex flex-col justify-center gap-4">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-[1.3] md:leading-[1.3] lg:leading-[1.3]">
@@ -26,7 +26,7 @@ export async function LandingPage({ course }: Props) {
             direkt vid slutförande.
           </p>
           <section className="flex gap-6 mb-4 flex-wrap">
-            {course && <BuyCourseButton {...course} />}
+            <BuyCourseButton {...course} />
             <Button
               variant="secondary"
               className="w-auto self-start text-base md:p-6"
@@ -44,7 +44,7 @@ export async function LandingPage({ course }: Props) {
             </Button>
           </section>
         </div>
-        <div>{course && <CourseCard {...course} />}</div>
+        <CourseCard {...course} />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
         <Testimonial />
