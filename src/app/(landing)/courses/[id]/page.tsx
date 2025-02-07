@@ -54,7 +54,7 @@ const lessons = [
 
 export default async function Page() {
   return (
-    <section className="container flex-1 pt-16">
+    <section className="container max-w-3xl flex-1 p-4 md:p-0 mt-16">
       <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold">
         Grundkurs i livsmedelshygien
       </h1>
