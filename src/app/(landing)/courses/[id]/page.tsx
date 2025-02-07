@@ -58,7 +58,7 @@ export default async function Page() {
       <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold">
         Grundkurs i livsmedelshygien
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <div className="grid grid-cols-1 gap-6 mt-8">
         {lessons.map(({ id, number, name, content }) => {
           return (
             <Card
