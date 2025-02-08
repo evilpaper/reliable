@@ -54,11 +54,11 @@ const lessons = [
 
 export default async function Page() {
   return (
-    <section className="container flex-1 pt-16">
+    <section className="container max-w-3xl flex-1 p-4 md:p-0 mt-16">
       <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold">
         Grundkurs i livsmedelshygien
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <div className="grid grid-cols-1 gap-6 mt-8">
         {lessons.map(({ id, number, name, content }) => {
           return (
             <Card
