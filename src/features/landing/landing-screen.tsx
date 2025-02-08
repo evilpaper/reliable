@@ -9,7 +9,7 @@ interface Props {
   course: Course;
 }
 
-export async function LandingPage({ course }: Props) {
+export async function LandingScreen({ course }: Props) {
   return (
     <section className="container flex flex-col gap-24 p-4 pt-24">
       <div className="grid lg:grid-cols-3 gap-16">
