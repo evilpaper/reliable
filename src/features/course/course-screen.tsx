@@ -6,11 +6,18 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { Icons } from "@/components/ui/icons";
+import Link from "next/link";
 
 interface Props {
   course: {
     name: string;
-    lessons: { id: string; number: number; name: string; content: string }[];
+    lessons: {
+      id: string;
+      number: number;
+      name: string;
+      content: string;
+      slug: string;
+    }[];
   };
 }
 
@@ -37,7 +44,7 @@ export async function CourseScreen({ course }: Props) {
       </section>
 
       <div className="grid grid-cols-1 gap-6 mt-8">
-        {course.lessons.map(({ id, number, name, content }) => {
+        {course.lessons.map(({ id, number, name, content, slug }) => {
           return (
             <Card
               key={id}
@@ -54,7 +61,13 @@ export async function CourseScreen({ course }: Props) {
                 </blockquote>
               </CardContent>
               <CardFooter>
-                <Button>Start</Button>
+                <Button asChild variant="default">
+                  <Link
+                    href={`/courses/grundkurs-i-livsmedelshygien/lesson/${slug}`}
+                  >
+                    Start
+                  </Link>
+                </Button>
               </CardFooter>
             </Card>
           );
