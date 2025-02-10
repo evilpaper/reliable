@@ -162,6 +162,18 @@ Reliable is an online training provider offering tailor made industry specific w
 - type: "TEXT" | "VIDEO" | "AUDIO"
 - isActive: boolean
 
+# Modules
+
+Follow the routes. Keep in mind. Not all entities are modules. Part science, part art.
+
+## Routes
+
+- reliable.com
+- reliable.com/course/:id
+- reliabe.com/course/:id/lesson/:id
+- reliable.com/cart
+- reliabe.com/my-courses
+
 # Local setup
 
 ### 1. Install dependencies
