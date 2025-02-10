@@ -13,17 +13,17 @@ Reliable is an online training provider offering tailor made industry specific w
 - Supabase
 - Playwright
 
-# Influential functional requirements
+# Influencial functional requirements
 
-- Customers can browse the app without being authenticated.
+- Anyone can browse the app without being authenticated.
 - Customers can add one or more courses to a shopping cart, with or without authentication.
-- Customers can shared bought courses that has not been started with employees with email address or phone number.
-- Customers can try a lesson without purchase the course.
+- Customers can shared bought courses that has not been started with other (most likely employees) with email address or phone number.
+- Anyone can try a lesson without purchase the course.
 - Courses be completed without authentication using only shared address and an activation code.
-- Authentication require only only email (magic link, like Claude).
+- Access to a bought course require only only email (magic link, like Claude).
 - The course content can be consumed in any language. Written or spoken.
 - The course content can be read, watched or listen too.
-- Purcase in Sweden can be made with Swish
+- Purchase in Sweden can be made with Swish
 
 # Event storming
 
@@ -48,6 +48,119 @@ Reliable is an online training provider offering tailor made industry specific w
 ## Systems - Internal or external that react to or trigger events.
 
 - Send email?
+
+# Domain Model
+
+## Entities
+
+- Course
+- Lesson
+- Customer
+- Attendee
+- ShoppingCart
+- CourseShare
+- CourseCompletion
+- Language
+- ContentFormat
+
+## Attributes and Operations
+
+### Course
+
+- id: string
+- name: string
+- description: string
+- version: number
+- price: number
+- availableForPurchase: boolean
+- languages: Language[]
+- contentFormats: ContentFormat[]
+- durationMinutes: number
+- region: string[]
+- certificationValidityDays: number
+- trialLessonId: string
+- isActive: boolean
+
+### Lesson
+
+- id: string
+- courseId: string
+- name: string
+- order: number
+- contentUrl: string
+- contentType: ContentFormat
+- durationMinutes: number
+- isTrial: boolean
+
+### Customer
+
+- id: string
+- name: string
+- email: string
+- phone: string
+- organization: string
+- region: string
+- preferredLanguage: string
+- purchasedCourses: string[] // Course IDs
+
+### Attendee
+
+- id: string
+- name: string
+- email: string
+- phone: string
+- sharedCourses: string[] // Course IDs
+- completedCourses: string[] // Course IDs
+- activationCode: string
+- preferredLanguage: string
+- preferredContentFormat: ContentFormat
+
+### CourseShare
+
+- id: string
+- courseId: string
+- customerId: string
+- attendeeEmail: string
+- attendeePhone: string
+- activationCode: string
+- expiresAt: Date
+- isActivated: boolean
+
+### CourseCompletion
+
+- id: string
+- courseId: string
+- attendeeId: string
+- completedAt: Date
+- score: number
+- certificateUrl: string
+- validUntil: Date
+
+### ShoppingCart
+
+- id: string
+- customerId: string
+- items: CartItem[]
+- createdAt: Date
+- updatedAt: Date
+
+### CartItem
+
+- courseId: string
+- quantity: number
+- unitPrice: number
+
+### Language
+
+- code: string
+- name: string
+- isActive: boolean
+
+### ContentFormat
+
+- id: string
+- type: "TEXT" | "VIDEO" | "AUDIO"
+- isActive: boolean
 
 # Local setup
 
