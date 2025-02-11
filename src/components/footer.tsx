@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ThemeToggle } from "@/components/theme/theme-toggle";
+import { ThemeToggle } from "@/common/components/theme-toggle";
 import reliableLogoBlackSvg from "../../public/reliable-logo-black.svg";
 import reliableLogoWhiteSvg from "../../public/reliable-logo-white.svg";
 
