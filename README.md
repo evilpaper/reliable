@@ -171,8 +171,10 @@ Follow the routes. Keep in mind. Not all entities are modules. Part science, par
 - reliable.com
 - reliable.com/course/:id
 - reliabe.com/course/:id/lesson/:id
-- reliable.com/cart
+- reliable.com/checkout
 - reliabe.com/my-courses
+
+* cart
 
 # Local setup
 
