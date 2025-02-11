@@ -1,5 +1,5 @@
-import { Nav } from "@/components/nav";
-import { Footer } from "@/components/footer";
+import { Nav } from "@/common/components/nav";
+import { Footer } from "@/common/components/footer";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
