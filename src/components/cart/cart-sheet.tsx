@@ -5,11 +5,16 @@ import {
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "@/components/ui/sheet";
-import { Icons } from "@/components/ui/icons";
-import { Button } from "@/components/ui/button";
+} from "@/common/components/ui/sheet";
+import { Icons } from "@/common/components/ui/icons";
+import { Button } from "@/common/components/ui/button";
 import { useCart } from "@/features/cart/use-cart";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/common/components/ui/card";
 interface CartSheetProps {
   isCartOpen: boolean;
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;

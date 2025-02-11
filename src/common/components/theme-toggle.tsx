@@ -1,7 +1,7 @@
 "use client";
 
-import { Icons } from "@/components/ui/icons";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Icons } from "@/common/components/ui/icons";
+import { Tabs, TabsList, TabsTrigger } from "@/common/components/ui/tabs";
 import { useTheme } from "next-themes";
 
 export function ThemeToggle() {

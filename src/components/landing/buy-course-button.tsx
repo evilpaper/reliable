@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/common/components/ui/button";
 import { Course } from "@/db/schema";
 import { useCart } from "@/features/cart/use-cart";
 import { useRouter } from "next/navigation";

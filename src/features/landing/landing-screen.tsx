@@ -1,7 +1,7 @@
 import { CourseCard } from "@/components/courses/course-card";
 import { BuyCourseButton } from "@/components/landing/buy-course-button";
 import { Testimonial } from "@/components/landing/testimonial";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/common/components/ui/button";
 import { Course } from "@/db/schema";
 import Link from "next/link";
 

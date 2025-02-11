@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/common/components/ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-} from "@/components/ui/card";
-import { Icons } from "@/components/ui/icons";
+} from "@/common/components/ui/card";
+import { Icons } from "@/common/components/ui/icons";
 import Link from "next/link";
 
 interface Props {

@@ -1,5 +1,9 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Icons } from "@/components/ui/icons";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/common/components/ui/avatar";
+import { Icons } from "@/common/components/ui/icons";
 
 const testinmonial = {
   imagePath: "/mathias-dahlgren.webp",

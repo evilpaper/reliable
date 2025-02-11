@@ -7,7 +7,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/common/components/ui/card";
 import { useCart } from "@/features/cart/use-cart";
 import { loadStripe } from "@stripe/stripe-js";
 import {
@@ -18,7 +18,7 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/common/components/ui/button";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string

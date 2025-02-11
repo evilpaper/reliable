@@ -1,14 +1,14 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/common/components/ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Icons } from "@/components/ui/icons";
+} from "@/common/components/ui/card";
+import { Icons } from "@/common/components/ui/icons";
 import { useCart } from "@/features/cart/use-cart";
 
 export function CheckoutCartContent() {

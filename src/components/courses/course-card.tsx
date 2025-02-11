@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Icons } from "@/components/ui/icons";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Icons } from "@/common/components/ui/icons";
+import { Button } from "@/common/components/ui/button";
+import { Card, CardContent } from "@/common/components/ui/card";
 import { useCart } from "@/features/cart/use-cart";
 import { Course } from "@/db/schema";
 import React from "react";
