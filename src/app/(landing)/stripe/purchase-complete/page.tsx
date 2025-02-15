@@ -1,5 +1,5 @@
 import Stripe from "stripe";
-import { Success } from "@/components/stripe/success";
+import { Success } from "@/features/checkout/success";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
