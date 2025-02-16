@@ -38,7 +38,7 @@ export async function LandingScreen({ course }: Props) {
               variant="outline"
               className="w-auto self-start text-base md:p-6"
             >
-              <Link href="/courses/grundkurs-i-livsmedelshygien">
+              <Link href="/courses/food-hygiene-foundations">
                 Se kursinnehåll
               </Link>
             </Button>

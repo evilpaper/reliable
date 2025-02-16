@@ -11,6 +11,7 @@ import Link from "next/link";
 interface Props {
   course: {
     name: string;
+    slug: string;
     lessons: {
       id: string;
       number: number;
