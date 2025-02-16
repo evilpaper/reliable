@@ -16,7 +16,7 @@ import { Icons } from "@/common/components/ui/icons";
 import { usePathname } from "next/navigation";
 import { Button } from "@/common/components/ui/button";
 import { useCart } from "@/features/cart/use-cart";
-import { CartSheet } from "@/components/cart/cart-sheet";
+import { CartSheet } from "@/features/cart/cart-sheet";
 import reliableLogoBlackSvg from "../../../public/reliable-logo-black.svg";
 import reliableLogoWhiteSvg from "../../../public/reliable-logo-white.svg";
 
