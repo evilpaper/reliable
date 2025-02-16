@@ -1,4 +1,4 @@
-import { CourseCard } from "@/components/courses/course-card";
+import { CourseCard } from "@/features/course/course-card";
 import { BuyCourseButton } from "@/features/landing/buy-course-button";
 import { Testimonial } from "@/features/landing/testimonial";
 import { Button } from "@/common/components/ui/button";
