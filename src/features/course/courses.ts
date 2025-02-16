@@ -6,7 +6,7 @@ export const courses = [
       {
         id: crypto.randomUUID(),
         number: 1,
-        slug: "livsmedelsakerhet",
+        slug: "chapter-1",
         name: "Livsmedelssäkerhet",
         content:
           "This module outlines your responsibilities and the actions you must take to ensure you comply with food safety law. It explains what you can expect from your employer, HACCP and the purpose of food safety management systems and the role of enforcement officers.",
@@ -14,8 +14,8 @@ export const courses = [
       {
         id: crypto.randomUUID(),
         number: 2,
+        slug: "chapter-2",
         name: "Mikrobiologiska faror",
-        slug: "mikrobiologiska-faror",
         content:
           "This module covers the various microbial hazards you may encounter in food handling and how to prevent them. It also explains how to prevent cross-contamination and the differences between low-risk and high-risk foods.",
       },

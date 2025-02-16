@@ -63,11 +63,7 @@ export async function CourseScreen({ course }: Props) {
               </CardContent>
               <CardFooter>
                 <Button asChild variant="default">
-                  <Link
-                    href={`/courses/grundkurs-i-livsmedelshygien/lesson/${slug}`}
-                  >
-                    Start
-                  </Link>
+                  <Link href={`/courses/${course.slug}/${slug}`}>Start</Link>
                 </Button>
               </CardFooter>
             </Card>
