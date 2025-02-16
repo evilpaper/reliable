@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckoutCartContent } from "@/components/checkout/checkout-cart-content";
+import { CheckoutCartContent } from "@/features/checkout/checkout-cart-content";
 import {
   Card,
   CardContent,
