@@ -16,8 +16,8 @@ interface Props {
       id: string;
       number: number;
       name: string;
+      synopsis: string;
       content: string;
-      slug: string;
     }[];
   };
 }
@@ -45,7 +45,7 @@ export async function CourseScreen({ course }: Props) {
       </section>
 
       <div className="grid grid-cols-1 gap-6 mt-8">
-        {course.lessons.map(({ id, number, name, content, slug }) => {
+        {course.lessons.map(({ id, number, name, content }) => {
           return (
             <Card
               key={id}
@@ -63,7 +63,11 @@ export async function CourseScreen({ course }: Props) {
               </CardContent>
               <CardFooter>
                 <Button asChild variant="default">
-                  <Link href={`/courses/${course.slug}/${slug}`}>Start</Link>
+                  <Link
+                    href={`/courses/${course.slug}/lesson-${number.toString()}`}
+                  >
+                    Start
+                  </Link>
                 </Button>
               </CardFooter>
             </Card>
