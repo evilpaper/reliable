@@ -11,7 +11,7 @@ import Link from "next/link";
 interface Props {
   course: {
     name: string;
-    slug: string;
+    courseSlug: string;
     lessons: {
       id: string;
       number: number;
@@ -64,7 +64,9 @@ export async function CourseScreen({ course }: Props) {
               <CardFooter>
                 <Button asChild variant="default">
                   <Link
-                    href={`/courses/${course.slug}/lesson-${number.toString()}`}
+                    href={`/courses/${
+                      course.courseSlug
+                    }/lesson-${number.toString()}`}
                   >
                     Start
                   </Link>

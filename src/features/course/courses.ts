@@ -1,7 +1,7 @@
 export const courses = [
   {
     name: "Grundkurs i livsmedelshygien",
-    slug: "food-hygiene-foundations",
+    courseSlug: "food-hygiene-foundations",
     lessons: [
       {
         id: crypto.randomUUID(),
