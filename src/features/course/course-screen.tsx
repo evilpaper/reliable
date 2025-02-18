@@ -66,7 +66,7 @@ export async function CourseScreen({ course }: Props) {
                   <Link
                     href={`/courses/${
                       course.courseSlug
-                    }/lesson-${lessonNumber.toString()}`}
+                    }/lessons/${lessonNumber.toString()}`}
                   >
                     Start
                   </Link>
