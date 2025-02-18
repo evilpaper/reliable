@@ -10,12 +10,12 @@ import Link from "next/link";
 
 interface Props {
   course: {
-    name: string;
+    title: string;
     courseSlug: string;
     lessons: {
       id: string;
-      number: number;
-      name: string;
+      lessonNumber: number;
+      lessonTitle: string;
       synopsis: string;
       content: string;
     }[];
@@ -29,7 +29,7 @@ export async function CourseScreen({ course }: Props) {
   return (
     <section className="container max-w-3xl flex-1 p-4 md:p-0 mt-16">
       <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold">
-        {course.name}
+        {course.title}
       </h1>
       <section className="flex my-8 gap-12">
         <div className="flex gap-2">
@@ -45,7 +45,7 @@ export async function CourseScreen({ course }: Props) {
       </section>
 
       <div className="grid grid-cols-1 gap-6 mt-8">
-        {course.lessons.map(({ id, number, name, synopsis }) => {
+        {course.lessons.map(({ id, lessonNumber, lessonTitle, synopsis }) => {
           return (
             <Card
               key={id}
@@ -53,7 +53,7 @@ export async function CourseScreen({ course }: Props) {
             >
               <CardHeader>
                 <span className="text-gray-600 font-medium">
-                  {number}. {name}
+                  {lessonNumber}. {lessonTitle}
                 </span>
               </CardHeader>
               <CardContent>
@@ -66,7 +66,7 @@ export async function CourseScreen({ course }: Props) {
                   <Link
                     href={`/courses/${
                       course.courseSlug
-                    }/lesson-${number.toString()}`}
+                    }/lesson-${lessonNumber.toString()}`}
                   >
                     Start
                   </Link>
