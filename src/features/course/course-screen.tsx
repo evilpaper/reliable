@@ -45,7 +45,7 @@ export async function CourseScreen({ course }: Props) {
       </section>
 
       <div className="grid grid-cols-1 gap-6 mt-8">
-        {course.lessons.map(({ id, number, name, content }) => {
+        {course.lessons.map(({ id, number, name, synopsis }) => {
           return (
             <Card
               key={id}
@@ -53,12 +53,12 @@ export async function CourseScreen({ course }: Props) {
             >
               <CardHeader>
                 <span className="text-gray-600 font-medium">
-                  {number} - {name}
+                  {number}. {name}
                 </span>
               </CardHeader>
               <CardContent>
                 <blockquote className="text-1xl text-gray-600 font-normal leading-relaxed">
-                  {content}
+                  {synopsis}
                 </blockquote>
               </CardContent>
               <CardFooter>
