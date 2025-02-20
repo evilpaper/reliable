@@ -1,4 +1,6 @@
+import { Button } from "@/common/components/ui/button";
 import { courses } from "@/features/course/courses";
+import { Quiz } from "@/features/course/quiz";
 
 interface PageProps {
   params: {
@@ -23,6 +25,13 @@ export default async function Page({ params }: PageProps) {
   return (
     <section className="container max-w-3xl flex-1 p-4 md:p-0 mt-16">
       <p>{lesson.content}</p>
+      <h2 className="text-xl font-semibold">{lesson.question}</h2>
+      <Quiz
+        question={lesson.question}
+        options={lesson.options}
+        correctAnswer={lesson.correctAnswer}
+        explanation={lesson.explanation}
+      />
     </section>
   );
 }

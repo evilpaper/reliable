@@ -10,6 +10,16 @@ export const courses = [
         synopsis: "Lay out the landscape. Introduce key player.",
         content:
           "This module outlines your responsibilities and the actions you must take to ensure you comply with food safety law. It explains what you can expect from your employer, HACCP and the purpose of food safety management systems and the role of enforcement officers.",
+        question: "Why should you bother",
+        options: [
+          "No clue",
+          "To not kill the guest",
+          "Ro save money",
+          "To make my boss happy",
+        ],
+        correctAnswer: "To not kill the guest",
+        explanation:
+          "The law is there to protect the person who purchase and consume your food, that is, the guest.",
       },
       {
         id: crypto.randomUUID(),
