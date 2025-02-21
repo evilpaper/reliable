@@ -17,8 +17,8 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/common/components/ui/button";
 import { useCart } from "@/features/cart/use-cart";
 import { CartSheet } from "@/features/cart/cart-sheet";
-import reliableLogoBlackSvg from "../../../public/reliable-logo-black.svg";
-import reliableLogoWhiteSvg from "../../../public/reliable-logo-white.svg";
+import reliableLogoBlackSvg from "../../../public/reliableLogoBlackSvg.svg";
+import reliableLogoWhiteSvg from "../../../public/reliableLogoWhiteSvg.svg";
 
 const navItems = [
   { name: "Course details", href: "/courses/food-hygiene-foundations" },

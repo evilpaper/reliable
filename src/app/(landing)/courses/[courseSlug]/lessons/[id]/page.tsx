@@ -23,9 +23,9 @@ export default async function Page({ params }: PageProps) {
   }
 
   return (
-    <section className="container max-w-3xl flex-1 p-4 md:p-0 mt-16">
+    <section className="container md:p-0 max-w-md flex flex-col items-start justify-start gap-6">
       <p>{lesson.content}</p>
-      <h2 className="text-xl font-semibold">{lesson.question}</h2>
+      <p>{lesson.question}</p>
       <Quiz
         question={lesson.question}
         options={lesson.options}
