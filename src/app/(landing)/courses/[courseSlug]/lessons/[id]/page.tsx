@@ -23,7 +23,7 @@ export default async function Page({ params }: PageProps) {
   }
 
   return (
-    <section className="container md:p-0 max-w-md flex flex-col items-start justify-start gap-6">
+    <section className="container flex-1 md:p-0 max-w-md flex flex-col items-start justify-start gap-6 mt-12">
       <span className="text-gray-600 font-medium">
         {lesson.lessonNumber}. {lesson.lessonTitle}
       </span>
