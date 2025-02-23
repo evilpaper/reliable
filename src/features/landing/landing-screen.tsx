@@ -28,10 +28,13 @@ export async function LandingScreen({ course }: Props) {
           <section className="flex gap-6 mb-4 flex-wrap">
             <BuyCourseButton {...course} />
             <Button
+              asChild
               variant="secondary"
               className="w-auto self-start text-base md:p-6"
             >
-              Prova gratis lektion
+              <Link href="/courses/food-hygiene-foundations/lessons/1">
+                Prova gratis lektion
+              </Link>
             </Button>
             <Button
               asChild
