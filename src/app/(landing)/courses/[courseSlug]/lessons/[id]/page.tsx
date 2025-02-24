@@ -28,12 +28,14 @@ export default async function Page({ params }: PageProps) {
         {lesson.lessonNumber}. {lesson.lessonTitle}
       </span>
       <p>{lesson.content}</p>
-      <Quiz
-        question={lesson.question}
-        options={lesson.options}
-        correctAnswer={lesson.correctAnswer}
-        explanation={lesson.explanation}
-      />
+      {lesson.question && (
+        <Quiz
+          question={lesson.question}
+          options={lesson.options}
+          correctAnswer={lesson.correctAnswer}
+          explanation={lesson.explanation}
+        />
+      )}
     </section>
   );
 }
