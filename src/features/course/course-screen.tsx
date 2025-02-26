@@ -51,10 +51,11 @@ export async function CourseScreen({ course }: Props) {
               key={id}
               className="bg-gray-50/50 border-0 rounded-2xl h-full"
             >
-              <CardHeader>
-                <span className="text-gray-600 font-medium">
-                  {lessonNumber}. {lessonTitle}
+              <CardHeader className="flex flex-row items-center gap-4">
+                <span className="flex items-center justify-center w-10 h-10 rounded-full bg-black text-white font-medium">
+                  {lessonNumber}
                 </span>
+                <span className="text-gray-600 font-medium">{lessonTitle}</span>
               </CardHeader>
               <CardContent>
                 <blockquote className="text-1xl text-gray-600 font-normal leading-relaxed">
