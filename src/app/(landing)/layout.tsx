@@ -3,10 +3,10 @@ import { Footer } from "@/common/components/footer";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <section className="flex flex-col items-center justify-between min-h-lvh">
+    <div className="flex flex-col items-center justify-between min-h-lvh">
       <Nav />
-      {children}
+      <main className="mt-16">{children}</main>
       <Footer />
-    </section>
+    </div>
   );
 }
