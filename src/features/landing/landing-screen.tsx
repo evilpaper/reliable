@@ -11,7 +11,7 @@ interface Props {
 
 export async function LandingScreen({ course }: Props) {
   return (
-    <section className="container flex flex-col gap-24 p-4 pt-24">
+    <section className="container flex flex-col gap-24 p-4 pt-32">
       <div className="grid lg:grid-cols-3 gap-16">
         <div className="lg:col-span-2 flex flex-col justify-center gap-4">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-[1.3] md:leading-[1.3] lg:leading-[1.3]">

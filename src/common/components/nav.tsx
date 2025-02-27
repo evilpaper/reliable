@@ -36,7 +36,7 @@ export function Nav() {
   }, 0);
 
   return (
-    <section className="container z-40 flex items-center gap-6 w-full justify-between md:justify-normal p-4">
+    <section className="fixed container z-40 flex items-center gap-6 w-full justify-between md:justify-normal p-4">
       <div className="flex items-center gap-6">
         <section className="md:hidden">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>

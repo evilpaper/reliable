@@ -1,3 +1,7 @@
 export default function Page() {
-  return <p>About</p>;
+  return (
+    <section className="container pt-32">
+      <p>About</p>
+    </section>
+  );
 }
