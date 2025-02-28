@@ -62,7 +62,7 @@ export function Nav() {
                     onClick={() => setIsOpen(false)}
                     className={cn(
                       "flex pb-4",
-                      `/${name.toLowerCase()}` === `${pathName}`
+                      `${href}` === `${pathName}`
                         ? `border-b border-black`
                         : `border-none`
                     )}
@@ -75,7 +75,7 @@ export function Nav() {
             </SheetContent>
           </Sheet>
         </section>
-        <Link href="/" className="text-xl border-b-2 border-background">
+        <Link href="/" className="text-xl">
           <Image
             src={reliableLogoBlackSvg}
             alt="The Reliable Club"
@@ -102,9 +102,9 @@ export function Nav() {
               href={href}
               className={cn(
                 "px-3 py-2 text-sm",
-                `/${name.toLowerCase()}` === `${pathName}`
+                `${href}` === `${pathName}`
                   ? `border-b-2 border-foreground`
-                  : `border-b-2 border-background`
+                  : `border-none`
               )}
             >
               {name}
