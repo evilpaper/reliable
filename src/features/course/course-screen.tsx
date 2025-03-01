@@ -81,7 +81,7 @@ function Lesson({
     >
       <Card>
         <CardHeader>
-          <span className={`text-lg font-medium`}>{lessonNumber}.</span>
+          <span className={`text-6xl font-bold`}>{lessonNumber}</span>
         </CardHeader>
         <CardContent>
           <h3 className={`text-xl font-medium`}>{lessonTitle}</h3>
