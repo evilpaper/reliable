@@ -1,5 +1,6 @@
 import { Button } from "@/common/components/ui/button";
 import { courses } from "@/features/course/courses";
+import { LessonScreen } from "@/features/course/lesson-screen";
 import { Quiz } from "@/features/course/quiz";
 
 interface PageProps {
@@ -22,20 +23,5 @@ export default async function Page({ params }: PageProps) {
     return <h1>Hm...the lesson you tried to reach does not exist.</h1>;
   }
 
-  return (
-    <section className="container flex-1 md:p-0 max-w-md flex flex-col items-start justify-start gap-6 mt-12">
-      <span className="text-gray-600 font-medium">
-        {lesson.lessonNumber}. {lesson.lessonTitle}
-      </span>
-      <p>{lesson.content}</p>
-      {lesson.question && (
-        <Quiz
-          question={lesson.question}
-          options={lesson.options}
-          correctAnswer={lesson.correctAnswer}
-          explanation={lesson.explanation}
-        />
-      )}
-    </section>
-  );
+  return <LessonScreen lesson={lesson} />;
 }
